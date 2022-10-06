@@ -47,7 +47,7 @@ $header-blue-active: #0f3464;
   height: 24px;
   box-shadow: 0 0 2vw 0.4vh rgba(255, 255, 230, 0.06);
   padding: 0.1em 0.5em;
-  border-radius: 0.2em;  
+  border-radius: 0.2em;
 }
 
 .header__search__submit {
@@ -61,7 +61,7 @@ $header-blue-active: #0f3464;
 // -----------------------------settings-----------------------------
 .header__settings-button {
   width: 24px;
-  height: 24px;  
+  height: 24px;
   background-color: $header-blue;
   border-radius: 5px;
   background-image: url('../../assets/image/header/header__settings.svg');
