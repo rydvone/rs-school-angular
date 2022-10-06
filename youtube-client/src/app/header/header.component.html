@@ -1,1 +1,32 @@
-<p>header works!</p>
+<header class="header">
+  <div class="header__start-block">
+    <div class="header__main">
+      <img src="../../assets/image/header__logo.svg" alt="App Logo" class="header__logo" />
+      <div class="header__search">
+        <label for="header__search__input"></label>
+        <input
+          type="search"
+          class="header__search__input"
+          id="header__search__input"
+          placeholder="search..."
+          autocomplete="search"
+          (keydown.enter)="onSearch()"
+          name="valueSearch"
+          [(ngModel)]="valueSearch"
+        />
+        <button class="header__search__submit" (click)="onSearch()">search</button>
+      </div>
+      <button
+        title="settings"
+        type="button"
+        class="header__settings-button"
+        [ngStyle]="{ 'background-color': buttonSettingsColor }"
+        (click)="showSettings()"
+      ></button>
+    </div>
+    <div class="header__auth">
+      <h3 class="header__auth__name"></h3>
+      <button class="header__auth__button"></button>
+    </div>
+  </div>
+</header>

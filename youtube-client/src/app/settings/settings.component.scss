@@ -1,0 +1,47 @@
+$settings-grey-dark: #929292;
+$settings-blue: #2f80ed;
+%settings-fl-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5vw;
+  color: $settings-blue;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0 auto;
+}
+
+.settings__title {
+  color: $settings-grey-dark;
+}
+
+.settings__date,
+.settings__count {
+  &:hover {
+    cursor: pointer;
+    text-shadow: 0 0 0.03em #000000;
+  }
+}
+
+.settings__sort_active {
+  background-color: #8ff271;
+}
+
+.settings__filter {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+
+.settings__input {
+  box-shadow: 0 0 2vw 0.4vh rgba(255, 255, 230, 0.06);
+  padding: 0.1em 0.5em 0;
+  border-radius: 0.2em;  
+}

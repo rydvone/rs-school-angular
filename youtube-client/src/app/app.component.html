@@ -1,0 +1,5 @@
+<div class="wrapper__root-component">
+  <app-header (searchResult)="onSearchResult($event)"></app-header>
+  <app-settings *ngIf="visibleSettings"></app-settings>
+  <app-cards *ngIf="visibleCards" [searchResult]="sendSearchResult" ></app-cards>
+</div>

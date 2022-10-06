@@ -1,1 +1,33 @@
 @import '~normalize.css/normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:ital,wght@0,300;0,400;0,700;1,300&display=swap');
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  box-shadow: 0.1em 0.1em #999;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: 0.01em 0.01em #666;
+    transform: translate(0.1em, 0.1em);
+  }
+}

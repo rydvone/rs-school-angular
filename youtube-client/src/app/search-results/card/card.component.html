@@ -1,1 +1,28 @@
-<p>card works!</p>
+<div class="card" [ngStyle]="{ borderBottom: '7px solid' + getColor(card.snippet.publishedAt) }">
+  <div class="card__description">
+    <img [src]="card.snippet.thumbnails.medium.url" alt="title screen" class="card__screen" />
+
+    <div class="card__statistics">
+      <div class="card__statistic card__view">
+        <img src="../../../assets/image/card/viewed.svg" alt="card view" class="card__view__img" />
+        <span class="card__menu__text">{{ card.statistics.viewCount }}</span>
+      </div>
+      <div class="card__statistic card__like">
+        <img src="../../../assets/image/card/liked.svg" alt="card like" class="card__like__img" />
+        <span class="card__menu__text">{{ card.statistics.likeCount }}</span>
+      </div>
+      <div class="card__statistic card__dislike">
+        <img src="../../../assets/image/card/dislike.svg" alt="card dislike" class="card__dislike__img" />
+        <span class="card__menu__text">{{ card.statistics.dislikeCount }}</span>
+      </div>
+      <div class="card__statistic card__comments">
+        <img src="../../../assets/image/card/comments.svg" alt="card dislike" class="card__comments__img" />
+        <span class="card__menu__text">{{ card.statistics.commentCount }}</span>
+      </div>
+    </div>
+
+    <h2 class="card__title">{{ card.snippet.title }}</h2>
+  </div>
+
+  <button class="card__more">more...</button>
+</div>
