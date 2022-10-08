@@ -39,7 +39,6 @@ export class HeaderComponent {
   setActiveEvent(value: string) {
     Object.keys(this.outputEventHeader).forEach((key) => {
       if (key === value) {
-        console.log(key);
         this.outputEventHeader[key as keyof OutputEventHeader].active = true;
       } else this.outputEventHeader[key as keyof OutputEventHeader].active = false;
     });

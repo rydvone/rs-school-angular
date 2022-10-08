@@ -1,5 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SettingsState } from '../models/settings.state';
+
+export interface OutputEventSettings {
+  buttonSortDate: {
+    active: boolean;
+    value: string;
+  };
+  buttonSortCount: {
+    active: boolean;
+    value: string;
+  };
+  buttonFilterByWord: {
+    active: boolean;
+    value: string;
+  };
+}
 
 @Component({
   selector: 'app-settings',
@@ -7,6 +22,34 @@ import { SettingsState } from '../models/settings.state';
   styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent {
+  @Output() settingsEvent = new EventEmitter();
+
+  valueFilter = '';
+
+  outputEventSettings = {
+    buttonSortDate: {
+      active: false,
+      value: '',
+    },
+    buttonSortCount: {
+      active: false,
+      value: '',
+    },
+    buttonFilterByWord: {
+      active: false,
+      value: '',
+    },
+  };
+
+  setActiveEvent(value: string) {
+    Object.keys(this.outputEventSettings).forEach((key) => {
+      if (key === value) {
+        console.log(key);
+        this.outputEventSettings[key as keyof OutputEventSettings].active = true;
+      } else this.outputEventSettings[key as keyof OutputEventSettings].active = false;
+    });
+  }
+
   sortSet = SettingsState.sortSet;
 
   sortOrderView = {
@@ -57,5 +100,11 @@ export class SettingsComponent {
       this.viewSortCount = this.sortOrderView.desc;
       SettingsState[SettingsState.sortSet].direction = false;
     }
+  }
+
+  onFilter() {
+    this.setActiveEvent('buttonFilterByWord');
+    this.outputEventSettings.buttonFilterByWord.value = this.valueFilter;
+    this.settingsEvent.emit(this.outputEventSettings);
   }
 }

@@ -10,6 +10,8 @@ import response from '../../../assets/response/response.json';
 export class CardsComponent {
   @Input() searchResult!: string;
 
+  @Input() valueFilter!: string;
+
   responseInner: Card[] = <Card[]>JSON.parse(JSON.stringify(response.items));
 
   cards: Card[] = this.shuffleCards();
