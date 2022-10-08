@@ -10,6 +10,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { CardsComponent } from './search-results/cards/cards.component';
 import { CardComponent } from './search-results/card/card.component';
 import { FilterByWordPipe } from './pipes/filterbyword.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FilterByWordPipe } from './pipes/filterbyword.pipe';
     CardsComponent,
     CardComponent,
     FilterByWordPipe,
+    SortPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { SettingsSort } from '../const/settings';
 import { SettingsState } from '../models/settings.state';
 
 export interface OutputEventSettings {
@@ -44,7 +45,6 @@ export class SettingsComponent {
   setActiveEvent(value: string) {
     Object.keys(this.outputEventSettings).forEach((key) => {
       if (key === value) {
-        console.log(key);
         this.outputEventSettings[key as keyof OutputEventSettings].active = true;
       } else this.outputEventSettings[key as keyof OutputEventSettings].active = false;
     });
@@ -78,28 +78,38 @@ export class SettingsComponent {
   }
 
   onSortDate() {
+    this.setActiveEvent('buttonSortDate');
+
     SettingsState.sortSet = 'sortDate';
     this.sortSet = 'sortDate';
     this.showDirection(this.sortSet);
     if (this.viewSortCount === this.sortOrderView.none || this.viewSortCount === this.sortOrderView.desc) {
       this.viewSortCount = this.sortOrderView.asc;
       SettingsState[SettingsState.sortSet].direction = true;
+      this.outputEventSettings.buttonSortDate.value = SettingsSort.direction.asc;
     } else {
       this.viewSortCount = this.sortOrderView.desc;
       SettingsState[SettingsState.sortSet].direction = false;
+      this.outputEventSettings.buttonSortDate.value = SettingsSort.direction.desc;
     }
+    this.settingsEvent.emit(this.outputEventSettings);
   }
 
   onSortCount() {
+    this.setActiveEvent('buttonSortCount');
+
     SettingsState.sortSet = 'sortCount';
     this.sortSet = 'sortCount';
     if (this.viewSortCount === this.sortOrderView.none || this.viewSortCount === this.sortOrderView.desc) {
       this.viewSortCount = this.sortOrderView.asc;
       SettingsState[SettingsState.sortSet].direction = true;
+      this.outputEventSettings.buttonSortCount.value = SettingsSort.direction.asc;
     } else {
       this.viewSortCount = this.sortOrderView.desc;
       SettingsState[SettingsState.sortSet].direction = false;
+      this.outputEventSettings.buttonSortCount.value = SettingsSort.direction.desc;
     }
+    this.settingsEvent.emit(this.outputEventSettings);
   }
 
   onFilter() {

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SendSettingsSort } from 'src/app/app.component';
 import { Card } from 'src/app/models/card.model';
 import response from '../../../assets/response/response.json';
 
@@ -9,6 +10,8 @@ import response from '../../../assets/response/response.json';
 })
 export class CardsComponent {
   @Input() searchResult!: string;
+
+  @Input() valueSort!: SendSettingsSort;
 
   @Input() valueFilter!: string;
 
