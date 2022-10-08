@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const SettingsState = {\n  sortSet: '',\n  sortDate: {\n    direction: false\n  },\n  sortCount: {\n    direction: false\n  },\n  filterWord: {\n    value: ''\n  }\n};","map":null,"metadata":{},"sourceType":"module"}

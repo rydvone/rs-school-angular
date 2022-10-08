@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const SettingsSort = {\n  type: {\n    none: 'none',\n    date: 'date',\n    count: 'count'\n  },\n  direction: {\n    none: 'none',\n    asc: 'asc',\n    desc: 'desc'\n  }\n};","map":null,"metadata":{},"sourceType":"module"}

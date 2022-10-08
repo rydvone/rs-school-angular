@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const CardBorderColor = {\n  zero: 'transparent',\n  one: '#2f80ed',\n  two: '#27ae60',\n  three: '#f2c94c',\n  four: '#eb5757'\n};","map":null,"metadata":{},"sourceType":"module"}
