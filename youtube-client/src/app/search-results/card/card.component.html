@@ -1,4 +1,5 @@
-<div class="card" [ngStyle]="{ borderBottom: '7px solid' + getColor(card.snippet.publishedAt) }">
+<!-- <div class="card" [ngStyle]="{ borderBottom: '7px solid' + getColor(card.snippet.publishedAt) }"> -->
+<div class="card" [appColorBorderCard]="card.snippet.publishedAt">
   <div class="card__description">
     <img [src]="card.snippet.thumbnails.medium.url" alt="title screen" class="card__screen" />
 

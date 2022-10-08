@@ -25,7 +25,9 @@ export interface OutputEventSettings {
 export class SettingsComponent {
   @Output() settingsEvent = new EventEmitter();
 
-  valueFilter = '';
+  valueFilter = SettingsState.filterWord.value;
+
+  sortSet = SettingsState.sortSet;
 
   outputEventSettings = {
     buttonSortDate: {
@@ -49,8 +51,6 @@ export class SettingsComponent {
       } else this.outputEventSettings[key as keyof OutputEventSettings].active = false;
     });
   }
-
-  sortSet = SettingsState.sortSet;
 
   sortOrderView = {
     none: '&nbsp;',
@@ -100,6 +100,7 @@ export class SettingsComponent {
 
     SettingsState.sortSet = 'sortCount';
     this.sortSet = 'sortCount';
+    this.showDirection(this.sortSet);
     if (this.viewSortCount === this.sortOrderView.none || this.viewSortCount === this.sortOrderView.desc) {
       this.viewSortCount = this.sortOrderView.asc;
       SettingsState[SettingsState.sortSet].direction = true;
@@ -114,6 +115,7 @@ export class SettingsComponent {
 
   onFilter() {
     this.setActiveEvent('buttonFilterByWord');
+    SettingsState.filterWord.value = this.valueFilter;
     this.outputEventSettings.buttonFilterByWord.value = this.valueFilter;
     this.settingsEvent.emit(this.outputEventSettings);
   }

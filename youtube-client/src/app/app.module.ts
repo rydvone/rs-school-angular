@@ -11,6 +11,7 @@ import { CardsComponent } from './search-results/cards/cards.component';
 import { CardComponent } from './search-results/card/card.component';
 import { FilterByWordPipe } from './pipes/filterbyword.pipe';
 import { SortPipe } from './pipes/sort.pipe';
+import { ColorBorderCardDirective } from './directives/color-border-card.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SortPipe } from './pipes/sort.pipe';
     CardComponent,
     FilterByWordPipe,
     SortPipe,
+    ColorBorderCardDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

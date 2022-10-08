@@ -10,16 +10,19 @@ export class SortPipe implements PipeTransform {
     if (sortType === SettingsSort.type.none) {
       return cards;
     }
+
     const cardsInner: Card[] = <Card[]>JSON.parse(JSON.stringify(cards));
+
     if (sortType === SettingsSort.type.date) {
       const cardsInnerDate = cardsInner.map((obj) => {
         return { ...obj, publishedAt: new Date(obj.snippet.publishedAt) };
       });
       if (sortDirection === SettingsSort.direction.asc) {
-        return [...cardsInnerDate].sort((a, b) => a.publishedAt.getTime() - b.publishedAt.getTime());
+        return [...cardsInnerDate].sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
       }
-      return [...cardsInnerDate].sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+      return [...cardsInnerDate].sort((a, b) => a.publishedAt.getTime() - b.publishedAt.getTime());
     }
+
     if (sortDirection === SettingsSort.direction.asc) {
       return cardsInner.sort((a, b) => Number(a.statistics.viewCount) - Number(b.statistics.viewCount));
     }
