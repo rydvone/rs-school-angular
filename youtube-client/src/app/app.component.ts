@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OutputEventHeader } from './header/header.component';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,14 @@ export class AppComponent {
 
   visibleSettings = false;
 
-  onSearchResult(valueSearch: string) {
-    this.sendSearchResult = valueSearch;
-    this.visibleCards = true;
+  onEventHeader(eventHeader: OutputEventHeader) {
+    if (eventHeader.buttonSearch.active) {
+      this.sendSearchResult = eventHeader.buttonSearch.value;
+      console.log(eventHeader.buttonSearch.value);
+      this.visibleCards = true;
+    }
+    if (eventHeader.buttonSettings.active) {
+      this.visibleSettings = eventHeader.buttonSettings.visible;
+    }
   }
 }

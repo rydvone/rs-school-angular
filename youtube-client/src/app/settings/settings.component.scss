@@ -1,3 +1,4 @@
+$settings-grey: #e5e5e5;
 $settings-grey-dark: #929292;
 $settings-blue: #2f80ed;
 %settings-fl-center {
@@ -13,9 +14,11 @@ $settings-blue: #2f80ed;
   align-items: center;
   gap: 1.5vw;
   color: $settings-blue;
+  background-color: $settings-grey;
   font-size: 12px;
   line-height: 14px;
   margin: 0 auto;
+  padding: 1em 0;
 }
 
 .settings__title {
