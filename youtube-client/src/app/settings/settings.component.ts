@@ -1,17 +1,17 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SettingsSort } from '../const/settings';
+import { SettingsSort, SettingsSortFilterName, SettingsSortViewDirection } from '../const/settings';
 import { SettingsState } from '../models/settings.state';
 
 export interface OutputEventSettings {
-  buttonSortDate: {
+  sortDate: {
     active: boolean;
     value: string;
   };
-  buttonSortCount: {
+  sortCount: {
     active: boolean;
     value: string;
   };
-  buttonFilterByWord: {
+  filterByWord: {
     active: boolean;
     value: string;
   };
@@ -29,16 +29,21 @@ export class SettingsComponent {
 
   sortSet = SettingsState.sortSet;
 
+  viewSort = {
+    sortDate: SettingsState.sortDate,
+    sortCount: SettingsState.sortCount,
+  };
+
   outputEventSettings = {
-    buttonSortDate: {
+    sortDate: {
       active: false,
       value: '',
     },
-    buttonSortCount: {
+    sortCount: {
       active: false,
       value: '',
     },
-    buttonFilterByWord: {
+    filterByWord: {
       active: false,
       value: '',
     },
@@ -48,75 +53,49 @@ export class SettingsComponent {
     Object.keys(this.outputEventSettings).forEach((key) => {
       if (key === value) {
         this.outputEventSettings[key as keyof OutputEventSettings].active = true;
-      } else this.outputEventSettings[key as keyof OutputEventSettings].active = false;
+      } else {
+        this.outputEventSettings[key as keyof OutputEventSettings].active = false;
+        SettingsState[key as 'sortDate' | 'sortCount'] = SettingsSortViewDirection.none;
+        this.viewSort[key as 'sortDate' | 'sortCount'] = SettingsSortViewDirection.none;
+      }
     });
   }
 
-  sortOrderView = {
-    none: '&nbsp;',
-    asc: '&uarr;',
-    desc: '&darr;',
-  };
-
-  viewSort = {
-    sortDate: '&nbsp;',
-    sortCount: '&nbsp;',
-  };
-
-  viewSortDate = '&nbsp;';
-
-  viewSortCount = '&nbsp;';
-
-  showDirection(sort: 'sortDate' | 'sortCount') {
-    if (this.viewSort[sort] === this.sortOrderView.none || this.viewSort[sort] === this.sortOrderView.desc) {
-      this.viewSort[sort] = this.sortOrderView.asc;
-      SettingsState[sort].direction = true;
+  changeDirectionSort(sort: 'sortDate' | 'sortCount') {
+    if (
+      this.viewSort[sort] === SettingsSortViewDirection.none ||
+      this.viewSort[sort] === SettingsSortViewDirection.desc
+    ) {
+      this.viewSort[sort] = SettingsSortViewDirection.asc;
+      SettingsState[sort] = SettingsSortViewDirection.asc;
+      this.outputEventSettings[sort].value = SettingsSort.direction.asc;
     } else {
-      this.viewSort[sort] = this.sortOrderView.desc;
-      SettingsState[sort].direction = false;
+      this.viewSort[sort] = SettingsSortViewDirection.desc;
+      SettingsState[sort] = SettingsSortViewDirection.desc;
+      this.outputEventSettings[sort].value = SettingsSort.direction.desc;
     }
   }
 
   onSortDate() {
-    this.setActiveEvent('buttonSortDate');
-
-    SettingsState.sortSet = 'sortDate';
-    this.sortSet = 'sortDate';
-    this.showDirection(this.sortSet);
-    if (this.viewSortCount === this.sortOrderView.none || this.viewSortCount === this.sortOrderView.desc) {
-      this.viewSortCount = this.sortOrderView.asc;
-      SettingsState[SettingsState.sortSet].direction = true;
-      this.outputEventSettings.buttonSortDate.value = SettingsSort.direction.asc;
-    } else {
-      this.viewSortCount = this.sortOrderView.desc;
-      SettingsState[SettingsState.sortSet].direction = false;
-      this.outputEventSettings.buttonSortDate.value = SettingsSort.direction.desc;
-    }
+    SettingsState.sortSet = SettingsSortFilterName.date;
+    this.sortSet = SettingsSortFilterName.date;
+    this.changeDirectionSort(this.sortSet as 'sortDate' | 'sortCount');
+    this.setActiveEvent(SettingsSortFilterName.date);
     this.settingsEvent.emit(this.outputEventSettings);
   }
 
   onSortCount() {
-    this.setActiveEvent('buttonSortCount');
-
-    SettingsState.sortSet = 'sortCount';
-    this.sortSet = 'sortCount';
-    this.showDirection(this.sortSet);
-    if (this.viewSortCount === this.sortOrderView.none || this.viewSortCount === this.sortOrderView.desc) {
-      this.viewSortCount = this.sortOrderView.asc;
-      SettingsState[SettingsState.sortSet].direction = true;
-      this.outputEventSettings.buttonSortCount.value = SettingsSort.direction.asc;
-    } else {
-      this.viewSortCount = this.sortOrderView.desc;
-      SettingsState[SettingsState.sortSet].direction = false;
-      this.outputEventSettings.buttonSortCount.value = SettingsSort.direction.desc;
-    }
+    SettingsState.sortSet = SettingsSortFilterName.count;
+    this.sortSet = SettingsSortFilterName.count;
+    this.changeDirectionSort(this.sortSet as 'sortDate' | 'sortCount');
+    this.setActiveEvent(SettingsSortFilterName.count);
     this.settingsEvent.emit(this.outputEventSettings);
   }
 
   onFilter() {
-    this.setActiveEvent('buttonFilterByWord');
+    this.setActiveEvent(SettingsSortFilterName.filter);
     SettingsState.filterWord.value = this.valueFilter;
-    this.outputEventSettings.buttonFilterByWord.value = this.valueFilter;
+    this.outputEventSettings.filterByWord.value = this.valueFilter;
     this.settingsEvent.emit(this.outputEventSettings);
   }
 }

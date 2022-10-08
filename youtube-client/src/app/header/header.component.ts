@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { HeaderButtons } from '../const/header';
 
 export interface OutputEventHeader {
   buttonSearch: {
@@ -45,7 +46,7 @@ export class HeaderComponent {
   }
 
   onSearch() {
-    this.setActiveEvent('buttonSearch');
+    this.setActiveEvent(HeaderButtons.buttonSearch);
 
     if (this.valueSearch !== '') {
       this.outputEventHeader.buttonSearch.value = this.valueSearch;
@@ -54,7 +55,7 @@ export class HeaderComponent {
   }
 
   showSettings() {
-    this.setActiveEvent('buttonSettings');
+    this.setActiveEvent(HeaderButtons.buttonSettings);
 
     this.outputEventHeader.buttonSettings.visible = !this.outputEventHeader.buttonSettings.visible;
     this.buttonSettingsColor = this.outputEventHeader.buttonSettings.visible

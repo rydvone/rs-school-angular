@@ -40,16 +40,16 @@ export class AppComponent {
   }
 
   onEventSettings(eventSettings: OutputEventSettings) {
-    if (eventSettings.buttonSortDate.active) {
+    if (eventSettings.sortDate.active) {
       this.sendSettingsSort.sortType = SettingsSort.type.date;
-      this.sendSettingsSort.sortDirection = eventSettings.buttonSortDate.value;
+      this.sendSettingsSort.sortDirection = eventSettings.sortDate.value;
     }
-    if (eventSettings.buttonSortCount.active) {
+    if (eventSettings.sortCount.active) {
       this.sendSettingsSort.sortType = SettingsSort.type.count;
-      this.sendSettingsSort.sortDirection = eventSettings.buttonSortCount.value;
+      this.sendSettingsSort.sortDirection = eventSettings.sortCount.value;
     }
-    if (eventSettings.buttonFilterByWord.active) {
-      this.sendValueFilter = eventSettings.buttonFilterByWord.value;
+    if (eventSettings.filterByWord.active) {
+      this.sendValueFilter = eventSettings.filterByWord.value;
     }
   }
 }

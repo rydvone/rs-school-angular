@@ -1,16 +1,8 @@
 export interface Settings {
-  sortSet: '' | 'sortDate' | 'sortCount';
-  sortDate: SortDate;
-  sortCount: SortCount;
+  sortSet: string;
+  sortDate: string;
+  sortCount: string;
   filterWord: FilterWord;
-}
-
-interface SortDate {
-  direction: boolean;
-}
-
-interface SortCount {
-  direction: boolean;
 }
 
 interface FilterWord {
