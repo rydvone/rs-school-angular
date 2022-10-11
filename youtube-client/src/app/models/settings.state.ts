@@ -1,11 +1,12 @@
-import { SettingsSortViewDirection } from '../const/settings';
+import { SettingsSortViewDirection } from '../constant/settings';
 import { Settings } from './settings.model';
 
 export const SettingsState: Settings = {
-  sortSet: '',
-  sortDate: SettingsSortViewDirection.none,
-  sortCount: SettingsSortViewDirection.none,
-  filterWord: {
-    value: '',
+  sortType: 'none',
+  sort: {
+    none: SettingsSortViewDirection.none,
+    date: SettingsSortViewDirection.none,
+    count: SettingsSortViewDirection.none,
   },
+  filterWord: '',
 };

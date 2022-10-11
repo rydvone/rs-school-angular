@@ -9,7 +9,7 @@ import { AuthComponent } from './auth/auth.component';
 import { SettingsComponent } from './settings/settings.component';
 import { CardsComponent } from './search-results/cards/cards.component';
 import { CardComponent } from './search-results/card/card.component';
-import { FilterByWordPipe } from './pipes/filterbyword.pipe';
+import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { ColorBorderCardDirective } from './directives/color-border-card.directive';
 

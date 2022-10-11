@@ -9,11 +9,11 @@ import response from '../../../assets/response/response.json';
   styleUrls: ['./cards.component.scss'],
 })
 export class CardsComponent {
-  @Input() searchResult!: string;
+  @Input() searchResult = '';
 
   @Input() valueSort!: SendSettingsSort;
 
-  @Input() valueFilter!: string;
+  @Input() valueFilter = '';
 
   responseInner: Card[] = <Card[]>JSON.parse(JSON.stringify(response.items));
 

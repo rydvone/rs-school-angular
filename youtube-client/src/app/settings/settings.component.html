@@ -1,12 +1,12 @@
 <div class="settings">
   <div class="settings__title">Sorting by:</div>
-  <div [ngClass]="['settings__date', sortSet === 'sortDate' ? 'settings__sort_active' : '']" (click)="onSortDate()">
+  <div [ngClass]="['settings__date', sortType === 'date' ? 'settings__sort_active' : '']" (click)="onSortDate()">
     <span class="settings__date-text">date </span>
-    <span class="settings__date-sort-direction" [innerHTML]="viewSort.sortDate"></span>
+    <span class="settings__date-sort-direction" [innerHTML]="sortSettings.viewSort.date"></span>
   </div>
-  <div [ngClass]="['settings__count', sortSet === 'sortCount' ? 'settings__sort_active' : '']" (click)="onSortCount()">
+  <div [ngClass]="['settings__count', sortType === 'count' ? 'settings__sort_active' : '']" (click)="onSortCount()">
     <span class="settings__count-text">count of views </span>
-    <span class="settings__count-sort-direction" [innerHTML]="viewSort.sortCount"></span>
+    <span class="settings__count-sort-direction" [innerHTML]="sortSettings.viewSort.count"></span>
   </div>
   <form class="settings__filter">
     <label for="input">by word or sentance</label>

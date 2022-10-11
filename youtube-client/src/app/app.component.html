@@ -1,5 +1,9 @@
 <div class="wrapper__root-component">
-  <app-header (headerEvent)="onEventHeader($event)"></app-header>
-  <app-settings *ngIf="visibleSettings" (settingsEvent)="onEventSettings($event)"></app-settings>
-  <app-cards *ngIf="visibleCards" [searchResult]="sendSearchResult" [valueFilter]="sendValueFilter" [valueSort]="sendSettingsSort"></app-cards>
+  <div>
+    <app-header (valueSearchEvent)="onValueSearchEvent($event)" (displaySettings)="onDisplaySettings($event)"></app-header>
+    <app-settings *ngIf="visibleSettings" (filterByWordEvent)="onFilterByWordEvent($event)" (sortDateEvent)="onSortDateEvent($event)" (sortCountEvent)="onSortCountEvent($event)"></app-settings>
+  </div>
+  <div class="page__wrapper">
+    <app-cards *ngIf="visibleCards" [searchResult]="sendSearchResult" [valueFilter]="sendValueFilter" [valueSort]="sendSettingsSort"></app-cards>
+  </div>
 </div>

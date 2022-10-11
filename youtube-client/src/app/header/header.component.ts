@@ -1,16 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { HeaderButtons } from '../const/header';
 
-export interface OutputEventHeader {
-  buttonSearch: {
-    active: boolean;
-    value: string;
-  };
-  buttonSettings: {
-    active: boolean;
-    visible: boolean;
-  };
-}
 const ButtonSettingsColorBase = '#2f80ed';
 const ButtonSettingsColorActive = '#0f3464';
 
@@ -20,47 +9,23 @@ const ButtonSettingsColorActive = '#0f3464';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() headerEvent = new EventEmitter();
+  @Output() valueSearchEvent = new EventEmitter();
+
+  @Output() displaySettings = new EventEmitter();
 
   valueSearch = '';
 
+  settingsState = false;
+
   buttonSettingsColor: string = ButtonSettingsColorBase;
 
-  outputEventHeader = {
-    buttonSearch: {
-      active: false,
-      value: '',
-    },
-    buttonSettings: {
-      active: false,
-      visible: false,
-    },
-  };
-
-  setActiveEvent(value: string) {
-    Object.keys(this.outputEventHeader).forEach((key) => {
-      if (key === value) {
-        this.outputEventHeader[key as keyof OutputEventHeader].active = true;
-      } else this.outputEventHeader[key as keyof OutputEventHeader].active = false;
-    });
-  }
-
   onSearch() {
-    this.setActiveEvent(HeaderButtons.buttonSearch);
-
-    if (this.valueSearch !== '') {
-      this.outputEventHeader.buttonSearch.value = this.valueSearch;
-      this.headerEvent.emit(this.outputEventHeader);
-    }
+    this.valueSearchEvent.emit(this.valueSearch);
   }
 
   showSettings() {
-    this.setActiveEvent(HeaderButtons.buttonSettings);
-
-    this.outputEventHeader.buttonSettings.visible = !this.outputEventHeader.buttonSettings.visible;
-    this.buttonSettingsColor = this.outputEventHeader.buttonSettings.visible
-      ? ButtonSettingsColorActive
-      : ButtonSettingsColorBase;
-    this.headerEvent.emit(this.outputEventHeader);
+    this.settingsState = !this.settingsState;
+    this.buttonSettingsColor = this.settingsState ? ButtonSettingsColorActive : ButtonSettingsColorBase;
+    this.displaySettings.emit(this.settingsState);
   }
 }

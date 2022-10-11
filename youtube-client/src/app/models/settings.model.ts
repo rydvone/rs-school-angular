@@ -1,10 +1,13 @@
 export interface Settings {
-  sortSet: string;
-  sortDate: string;
-  sortCount: string;
-  filterWord: FilterWord;
+  sortType: SettingsSortType;
+  sort: {
+    none: string;
+    date: string;
+    count: string;
+  };
+  filterWord: string;
 }
 
-interface FilterWord {
-  value: string;
-}
+export type SettingsSortType = 'none' | 'date' | 'count';
+
+export type SettingsSortDirection = 'none' | 'asc' | 'desc';

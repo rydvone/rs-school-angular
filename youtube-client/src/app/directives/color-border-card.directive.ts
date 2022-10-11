@@ -1,5 +1,5 @@
 import { Directive, Input, ElementRef, Renderer2 } from '@angular/core';
-import { CardBorderColor } from '../const/card';
+import { CardBorderColor } from '../constant/card';
 
 @Directive({
   selector: '[appColorBorderCard]',
@@ -11,54 +11,32 @@ export class ColorBorderCardDirective {
 
   constructor(private el: ElementRef, private render: Renderer2) {}
 
-  private getPublicationAge(date: string): number {
+  getColor(date: string) {
     const datePublication = new Date(date).getTime();
     const dateNow = Date.now();
-    const msYear = 1000 * 60 * 60 * 24 * 365;
-    const msMonth = 1000 * 60 * 60 * 24 * 30;
-    const msDay = 1000 * 60 * 60 * 24;
+    const msInYear = 1000 * 60 * 60 * 24 * 365;
+    const msInMonth = 1000 * 60 * 60 * 24 * 30;
+    const msInDay = 1000 * 60 * 60 * 24;
 
-    const ageYear = Math.floor((dateNow - datePublication) / msYear);
-    if (ageYear >= 1) {
-      return 4;
+    const countYear = Math.floor((dateNow - datePublication) / msInYear);
+    if (countYear >= 1) {
+      return CardBorderColor.four;
     }
-    const ageMonth = Math.floor((dateNow - datePublication) / msMonth);
-    if (ageMonth > 6) {
-      return 4;
+    const countMonth = Math.floor((dateNow - datePublication) / msInMonth);
+    if (countMonth > 6) {
+      return CardBorderColor.four;
     }
-    if (ageMonth < 6 && ageMonth > 1) {
-      return 3;
+    if (countMonth < 6 && countMonth > 1) {
+      return CardBorderColor.three;
     }
-    const ageDay = Math.floor((dateNow - datePublication) / msDay);
-    if (ageDay > 7) {
-      return 2;
+    const countDay = Math.floor((dateNow - datePublication) / msInDay);
+    if (countDay > 7) {
+      return CardBorderColor.two;
     }
-    if (ageDay <= 7) {
-      return 1;
+    if (countDay <= 7) {
+      return CardBorderColor.one;
     }
-    return 0;
-  }
-
-  private getColor(date: string): string {
-    const numAge = this.getPublicationAge(date);
-    let color: string = CardBorderColor.zero;
-    switch (numAge) {
-      case 1:
-        color = CardBorderColor.one;
-        break;
-      case 2:
-        color = CardBorderColor.two;
-        break;
-      case 3:
-        color = CardBorderColor.three;
-        break;
-      case 4:
-        color = CardBorderColor.four;
-        break;
-      default:
-        break;
-    }
-    return color;
+    return CardBorderColor.zero;
   }
 
   setColor(date: string) {

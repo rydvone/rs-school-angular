@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { SettingsSort } from './const/settings';
-import { OutputEventHeader } from './header/header.component';
-import { OutputEventSettings } from './settings/settings.component';
+import { SettingsSort } from './constant/settings';
+import { SettingsSortDirection, SettingsSortType } from './models/settings.model';
 
 export interface SendSettingsSort {
-  sortType: string;
-  sortDirection: string;
+  sortType: SettingsSortType;
+  sortDirection: SettingsSortDirection;
 }
 
 @Component({
@@ -16,9 +15,9 @@ export interface SendSettingsSort {
 export class AppComponent {
   title = 'youtube-client';
 
-  sendSearchResult!: string;
+  sendSearchResult = '';
 
-  sendValueFilter!: string;
+  sendValueFilter = '';
 
   sendSettingsSort: SendSettingsSort = {
     sortType: SettingsSort.type.none,
@@ -29,27 +28,29 @@ export class AppComponent {
 
   visibleSettings = false;
 
-  onEventHeader(eventHeader: OutputEventHeader) {
-    if (eventHeader.buttonSearch.active) {
-      this.sendSearchResult = eventHeader.buttonSearch.value;
+  onValueSearchEvent(valueSearch: string) {
+    if (valueSearch) {
       this.visibleCards = true;
-    }
-    if (eventHeader.buttonSettings.active) {
-      this.visibleSettings = eventHeader.buttonSettings.visible;
+    } else {
+      this.visibleCards = false;
     }
   }
 
-  onEventSettings(eventSettings: OutputEventSettings) {
-    if (eventSettings.sortDate.active) {
-      this.sendSettingsSort.sortType = SettingsSort.type.date;
-      this.sendSettingsSort.sortDirection = eventSettings.sortDate.value;
-    }
-    if (eventSettings.sortCount.active) {
-      this.sendSettingsSort.sortType = SettingsSort.type.count;
-      this.sendSettingsSort.sortDirection = eventSettings.sortCount.value;
-    }
-    if (eventSettings.filterByWord.active) {
-      this.sendValueFilter = eventSettings.filterByWord.value;
-    }
+  onDisplaySettings(display: boolean) {
+    this.visibleSettings = display;
+  }
+
+  onSortDateEvent(sortDirection: SettingsSortDirection) {
+    this.sendSettingsSort.sortType = SettingsSort.type.date;
+    this.sendSettingsSort.sortDirection = sortDirection;
+  }
+
+  onSortCountEvent(sortDirection: SettingsSortDirection) {
+    this.sendSettingsSort.sortType = SettingsSort.type.count;
+    this.sendSettingsSort.sortDirection = sortDirection;
+  }
+
+  onFilterByWordEvent(valueFilter: string) {
+    this.sendValueFilter = valueFilter;
   }
 }
