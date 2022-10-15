@@ -1,6 +1,5 @@
-$settings-grey: #e5e5e5;
-$settings-grey-dark: #929292;
-$settings-blue: #2f80ed;
+@import '_colors';
+
 %settings-fl-center {
   display: flex;
   flex-direction: row;
@@ -13,8 +12,8 @@ $settings-blue: #2f80ed;
   justify-content: center;
   align-items: center;
   gap: 1.5vw;
-  color: $settings-blue;
-  background-color: $settings-grey;
+  color: $color-blue;
+  background-color: $color-grey;
   font-size: 12px;
   line-height: 14px;
   margin: 0 auto;
@@ -22,7 +21,7 @@ $settings-blue: #2f80ed;
 }
 
 .settings__title {
-  color: $settings-grey-dark;
+  color: $color-grey-dark;
 }
 
 .settings__date,
@@ -34,7 +33,7 @@ $settings-blue: #2f80ed;
 }
 
 .settings__sort_active {
-  background-color: #8ff271;
+  background-color: $color-sort-active;
 }
 
 .settings__filter {

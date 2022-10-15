@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SettingsSort, SettingsSortViewDirection } from '../constant/settings';
-import { SettingsSortType } from '../models/settings.model';
-import { SettingsState } from '../models/settings.state';
+import { SettingsSort, SettingsSortViewDirection } from '../../../constant/settings';
+import { SettingsSortType } from '../../models/settings.model';
+import { SettingsState } from '../../models/settings.state';
 
 @Component({
   selector: 'app-settings',

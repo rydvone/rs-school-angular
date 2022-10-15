@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SendSettingsSort } from 'src/app/app.component';
-import { Card } from 'src/app/models/card.model';
-import response from '../../../assets/response/response.json';
+import { Card } from 'src/app/youtube/models/card.model';
+import response from 'src/assets/response/response.json';
 
 @Component({
   selector: 'app-cards',

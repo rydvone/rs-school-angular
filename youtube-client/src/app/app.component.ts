@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SettingsSort } from './constant/settings';
-import { SettingsSortDirection, SettingsSortType } from './models/settings.model';
+import { SettingsSortDirection, SettingsSortType } from './core/models/settings.model';
 
 export interface SendSettingsSort {
   sortType: SettingsSortType;

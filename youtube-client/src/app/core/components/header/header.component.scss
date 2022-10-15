@@ -1,6 +1,5 @@
-$header-grey: #e5e5e5;
-$header-blue: #2f80ed;
-$header-blue-active: #0f3464;
+@import '_colors';
+
 %header-row-sb {
   display: flex;
   flex-direction: row;
@@ -15,7 +14,7 @@ $header-blue-active: #0f3464;
 
 .header {
   @extend %header-col-sb;
-  background-color: $header-grey;
+  background-color: $color-grey;
 }
 
 .header__start-block,
@@ -54,7 +53,7 @@ $header-blue-active: #0f3464;
   width: 80px;
   height: 24px;
   color: #fff;
-  background-color: $header-blue;
+  background-color: $color-blue;
   border-radius: 0px 4px 4px 0px;
 }
 
@@ -62,9 +61,8 @@ $header-blue-active: #0f3464;
 .header__settings-button {
   width: 24px;
   height: 24px;
-  background-color: $header-blue;
+  background-color: $color-blue;
   border-radius: 5px;
-  background-image: url('../../assets/image/header/header__settings.svg');
   background-position: center;
   background-repeat: no-repeat;
   &:hover {
@@ -79,7 +77,6 @@ $header-blue-active: #0f3464;
 .header__auth__button {
   width: 24px;
   height: 24px;
-  background: url('../../assets/image/header/header__auth__img.svg');
   background-repeat: no-repeat;
   background-size: 30px 30px;
   border: transparent;

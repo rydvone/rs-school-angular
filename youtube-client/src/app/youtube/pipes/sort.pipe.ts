@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SettingsSort } from '../constant/settings';
+import { SettingsSort } from '../../constant/settings';
 import { Card } from '../models/card.model';
-import { SettingsSortDirection, SettingsSortType } from '../models/settings.model';
+import { SettingsSortDirection, SettingsSortType } from '../../core/models/settings.model';
 
 @Pipe({
   name: 'sort',
