@@ -1,15 +1,15 @@
-:host {
+.page__wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 1440px;
-  min-height: 100vh;
-  margin: 0 auto;
+  align-items: center;
+  gap: 4em;
+  padding: 0 0 2em 0;
 }
 
 @media (max-width: 1279.98px) {
-  :host {
+  .wrapper__root-component {
     max-width: 96vw;
     margin: 0 auto;
   }
 }
+

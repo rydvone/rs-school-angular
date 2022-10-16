@@ -1,4 +1,4 @@
-import { SettingsSortViewDirection } from '../../constant/settings';
+import { SettingsSortViewDirection } from '../constant/settings';
 import { Settings } from './settings.model';
 
 export const SettingsState: Settings = {

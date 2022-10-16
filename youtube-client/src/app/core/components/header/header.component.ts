@@ -1,7 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { HeaderService } from '../../services/header.service';
 
-const ButtonSettingsColorBase = '#2f80ed';
-const ButtonSettingsColorActive = '#0f3464';
+// const ButtonSettingsColorBase = '#2f80ed';
+// const ButtonSettingsColorActive = '#0f3464';
 
 @Component({
   selector: 'app-header',
@@ -9,23 +10,20 @@ const ButtonSettingsColorActive = '#0f3464';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() valueSearchEvent = new EventEmitter();
-
-  @Output() displaySettings = new EventEmitter();
+  constructor(private headerService: HeaderService) {}
 
   valueSearch = '';
 
-  settingsState = false;
+  settingsState = this.headerService.stateSettings;
 
-  buttonSettingsColor: string = ButtonSettingsColorBase;
+  buttonSettingsColor: string = this.headerService.colorSettings;
 
   onSearch() {
-    this.valueSearchEvent.emit(this.valueSearch);
+    this.headerService.search(this.valueSearch);
   }
 
   showSettings() {
-    this.settingsState = !this.settingsState;
-    this.buttonSettingsColor = this.settingsState ? ButtonSettingsColorActive : ButtonSettingsColorBase;
-    this.displaySettings.emit(this.settingsState);
+    this.headerService.toggleSettings();
+    this.buttonSettingsColor = this.headerService.colorSettings;
   }
 }

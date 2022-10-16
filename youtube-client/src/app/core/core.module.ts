@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { SettingsComponent } from './components/settings/settings.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, SettingsComponent],
+  declarations: [HeaderComponent, FooterComponent, NotFoundComponent],
   imports: [CommonModule, FormsModule],
-  exports: [HeaderComponent, FooterComponent, SettingsComponent],
+  exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}

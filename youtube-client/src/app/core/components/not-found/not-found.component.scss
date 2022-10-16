@@ -1,0 +1,21 @@
+@import '_colors';
+
+:host {
+  display: flex;
+  gap: 1.5em;
+  padding: 1em 1em;
+  margin: 0 auto;
+}
+
+.not-found__logo {
+  display: block;
+  width: 99px;
+  height: 90px;
+  margin: 0 auto;
+}
+
+.not-found__title {
+  color: $color-grey-text;
+  font-weight: 700;
+  font-size: 1.5em;
+}

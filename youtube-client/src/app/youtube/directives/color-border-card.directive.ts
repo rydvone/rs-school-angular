@@ -1,5 +1,5 @@
 import { Directive, Input, ElementRef, Renderer2 } from '@angular/core';
-import { CardBorderColor } from '../../constant/card';
+import { CardBorderColor } from '../constant/card';
 
 @Directive({
   selector: '[appColorBorderCard]',

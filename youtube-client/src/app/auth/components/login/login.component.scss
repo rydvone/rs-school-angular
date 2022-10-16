@@ -1,0 +1,73 @@
+@import '_colors';
+
+.login {
+  width: 350px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-self: center;
+  background-color: $color-module-bgc;
+  margin: 0 auto;
+  padding: 22px 20px;
+  border-radius: 5px;
+}
+
+.login__title {
+  font-weight: 700;
+  font-size: 1.4em;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0 0 0 0.5rem;
+}
+
+.login__input_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__text {
+  align-self: flex-start;
+  color: $color-grey-text;
+  font-size: 0.8em;
+  line-height: 1.2;
+  padding: 0 0 0.15em 0.5rem;
+}
+
+.login__input_login,
+.login__input_password {
+  height: 37px;
+  background-color: $color-grey-input;
+  box-shadow: 0 0 2vw 0.4vh rgba(255, 255, 230, 0.06);
+  padding: 0.1em 0.5em;
+  border-radius: 0.2em;
+
+  &:active {
+    background-color: $color-white;
+  }
+}
+
+.login__button {
+  align-self: flex-end;
+  width: 124px;
+  height: 30px;
+  font-size: 0.7em;
+  line-height: 1.2;
+  color: $color-white;
+  background: $color-blue;
+  border-radius: 5px;
+  border: 0;
+}
+
+@media (max-width: 1023.98px) {
+  .login {
+    width: 40vw;
+    padding: 1.4em 1.2em;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .login {
+    width: 60vw;
+  }
+}
