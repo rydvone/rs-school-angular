@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Card } from 'src/app/youtube/models/card.model';
 
 @Component({
@@ -8,4 +9,10 @@ import { Card } from 'src/app/youtube/models/card.model';
 })
 export class CardComponent {
   @Input() public card!: Card;
+
+  constructor(private router: Router) {}
+
+  goToDetailedPage() {
+    this.router.navigate(['/main', this.card.id]);
+  }
 }

@@ -2,9 +2,10 @@
 
 :host {
   display: flex;
+  justify-content: center;
   gap: 1.5em;
   padding: 1em 1em;
-  margin: 0 auto;
+  margin: 10% auto;
 }
 
 .not-found__logo {

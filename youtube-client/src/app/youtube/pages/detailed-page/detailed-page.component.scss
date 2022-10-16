@@ -2,8 +2,11 @@
 
 .detailed {
   display: flex;
+  justify-content: center;
   align-items: center;
   line-height: 1.2;
+  margin: 0 auto;
+  padding: 2vw 1vw;
 }
 
 .detailed__back-button_wrapper {
@@ -21,6 +24,7 @@
 
 .detailed__screen {
   display: block;
+  width: 100%;
   max-width: 730px;
   height: 461px;
   margin: 0;

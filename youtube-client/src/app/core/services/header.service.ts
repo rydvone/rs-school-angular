@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
+import { SearchResultsService } from 'src/app/youtube/services/search-results.service';
 import { SettingsButtonColor } from '../constant/header.constant';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { SettingsButtonColor } from '../constant/header.constant';
 export class HeaderService {
   @Output() displaySettings = new EventEmitter();
 
-  @Output() searchEvent = new EventEmitter();
+  constructor(private searchResultsService: SearchResultsService) {}
 
   public stateSettings = false;
 
@@ -20,6 +21,6 @@ export class HeaderService {
   }
 
   search(value: string) {
-    this.searchEvent.emit(value);
+    this.searchResultsService.getCards(value);
   }
 }

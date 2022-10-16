@@ -2,13 +2,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { SettingsSort, SettingsSortViewDirection } from '../../constant/settings';
 import { SettingsSortType } from '../../models/settings.model';
 import { SettingsState } from '../../models/settings.state';
-import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
-  providers: [SettingsService],
 })
 export class SettingsComponent {
   @Output() sortDateEvent = new EventEmitter();
@@ -16,8 +14,6 @@ export class SettingsComponent {
   @Output() sortCountEvent = new EventEmitter();
 
   @Output() filterByWordEvent = new EventEmitter();
-
-  constructor(private settingsService: SettingsService) {}
 
   valueFilter = SettingsState.filterWord;
 

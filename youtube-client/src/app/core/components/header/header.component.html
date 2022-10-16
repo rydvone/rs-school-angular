@@ -1,7 +1,8 @@
 <header class="header">
   <div class="header__start-block">
     <div class="header__main">
-      <img src="./assets/image/header/header__logo.svg" alt="App Logo" class="header__logo" />
+      <a href="./">
+      <img src="./assets/image/header/header__logo.svg" alt="App Logo" class="header__logo" /></a>
       <div class="header__search">
         <label for="header__search__input"></label>
         <input
@@ -28,8 +29,7 @@
       <h3 class="header__auth__name"></h3>
       <button class="header__auth__button" [ngStyle]="{
         'background': 'url(./assets/image/header/header__auth__img.svg)'
-      }"></button>
+      }" (click)="goToLogin()"></button>
     </div>
   </div>
 </header>
-<!-- <app-settings *ngIf="visibleSettings" (filterByWordEvent)="onFilterByWordEvent($event)" (sortDateEvent)="onSortDateEvent($event)" (sortCountEvent)="onSortCountEvent($event)"></app-settings> -->

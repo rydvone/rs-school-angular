@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { HeaderService } from '../../services/header.service';
 
 // const ButtonSettingsColorBase = '#2f80ed';
@@ -10,20 +11,24 @@ import { HeaderService } from '../../services/header.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  constructor(private headerService: HeaderService) {}
+  constructor(private headerService: HeaderService, private router: Router) {}
 
-  valueSearch = '';
+  public valueSearch = '';
 
-  settingsState = this.headerService.stateSettings;
+  public settingsState = this.headerService.stateSettings;
 
-  buttonSettingsColor: string = this.headerService.colorSettings;
+  public buttonSettingsColor: string = this.headerService.colorSettings;
 
-  onSearch() {
+  public onSearch() {
     this.headerService.search(this.valueSearch);
   }
 
-  showSettings() {
+  public showSettings() {
     this.headerService.toggleSettings();
     this.buttonSettingsColor = this.headerService.colorSettings;
+  }
+
+  public goToLogin() {
+    this.router.navigate(['/login']);
   }
 }
