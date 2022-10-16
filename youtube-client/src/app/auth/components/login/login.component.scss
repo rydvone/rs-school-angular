@@ -1,8 +1,15 @@
 @import '_colors';
 
+:host {
+  display: flex;
+  justify-content: center;
+  padding: 1em 1em;
+  margin: 10% auto;
+}
+
 .login {
   width: 350px;
-  height: 250px;
+  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -11,6 +18,17 @@
   margin: 0 auto;
   padding: 22px 20px;
   border-radius: 5px;
+
+  @keyframes errorAnimat {
+    0% {
+      transition: box-shadow 2s ease-in;
+      box-shadow: inset 0 0 0px 2em red;
+      background-color: rgba(255, 42, 42, 0.6);
+    }
+  }
+  &.login_invalid {
+    animation: errorAnimat ease-in 1s backwards;
+  }
 }
 
 .login__title {
@@ -42,9 +60,23 @@
   padding: 0.1em 0.5em;
   border-radius: 0.2em;
 
-  &:active {
-    background-color: $color-white;
+  &:invalid {
+    animation: errorAnimate ease-in 1s backwards;
+    background-color: $color-input-invalid;
   }
+  @keyframes errorAnimate {
+    0% {
+      transition: box-shadow 2s ease-in;
+      box-shadow: inset 0 0 0px 2em red;
+      background-color: rgba(255, 42, 42, 0.6);
+    }
+  }
+}
+
+.login__button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.7em;
 }
 
 .login__button {

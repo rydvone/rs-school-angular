@@ -40,7 +40,7 @@
   height: 50px;
   margin: 0 auto;
   &:hover {
-    filter: drop-shadow(5px 5px 5px  rgba(26, 110, 155, 0.45));
+    filter: drop-shadow(5px 5px 5px rgba(26, 110, 155, 0.45));
   }
 }
 
@@ -84,6 +84,16 @@
   background-size: 30px 30px;
   border: transparent;
   border-radius: 4px;
+}
+
+.button-logout {
+  color: $color-white;
+  background-color: $color-blue;
+  font-size: 1.2em;
+  font-weight: bold;
+  &:hover {
+    background-color: $color-blue-active;
+  }
 }
 
 .header__auth__name {

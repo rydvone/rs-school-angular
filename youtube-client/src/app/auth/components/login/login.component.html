@@ -1,33 +1,35 @@
-<div class="login">
+<div [ngClass]="['login', isValidate ? '' : 'login_invalid']">
   <h2 class="login__title">Login</h2>
-  <div class="login__input_wrapper">
+  <form class="login__input_wrapper">
     <label for="login__input_login" class="login__text">login:</label>
     <input
       type="text"
-      class="login__input_login"
+      class="login__input login__input_login"
       id="login__input_login"
       placeholder="you name..."
-      autocomplete="off"
+      pattern="[0-9A-Za-z\s]{1,8}"
+      title="1 to 8 letters or number or white-space"
       name="valueNickname"
       [(ngModel)]="valueNickname"
     />
-  </div>
-  <div class="login__input_wrapper">
+  </form>
+  <form class="login__input_wrapper">
     <label for="login__input_password" class="login__text">password:</label>
     <input
       type="password"
-      class="login__input_password"
+      class="login__input login__input_password"
       id="login__input_password"
       placeholder="*******"
       autocomplete="off"
       name="valuePassword"
       [(ngModel)]="valuePassword"
-      minlength="2"
-      pattern="[0-9a-fA-F]{2,8}"
+      minlength="1"
+      maxlength="8"
       required
     />
+  </form>
+  <div class="login__button-wrapper">
+    <button class="login__button" (click)="onLogin()">Login</button>
+    <button class="login__button" (click)="onLogout()">Logout</button>
   </div>
-
-  <button class="login__button" (click)="onLogIn()">Login</button>
 </div>
-<!-- (keydown.enter)="onLoginOFF()" -->

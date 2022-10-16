@@ -1,9 +1,6 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderService } from '../../services/header.service';
-
-// const ButtonSettingsColorBase = '#2f80ed';
-// const ButtonSettingsColorActive = '#0f3464';
 
 @Component({
   selector: 'app-header',
