@@ -1,3 +1,3 @@
-export const LoginName = {
+export const LoginVariableNames = {
   token: 'token',
 };

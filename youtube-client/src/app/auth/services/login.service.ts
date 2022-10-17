@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginName } from '../constant/login.constant';
+import { LoginVariableNames } from '../constant/login.constant';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +29,7 @@ export class LoginService {
   }
 
   public getToken() {
-    return `${this.user}.${this.password}.${this.tokenKey}`;
+    return `${this.user}${this.password}`;
   }
 
   public login() {
@@ -38,13 +38,13 @@ export class LoginService {
   }
 
   public logout() {
-    localStorage.removeItem(LoginName.token);
+    localStorage.removeItem(LoginVariableNames.token);
     this.isLogin = false;
     this.router.navigate(['/login']);
   }
 
   public checkLogin() {
-    const token = localStorage.getItem(LoginName.token);
+    const token = localStorage.getItem(LoginVariableNames.token);
     let stateLogin = false;
     if (token) {
       stateLogin = true;
@@ -54,7 +54,7 @@ export class LoginService {
 
   public setAuth() {
     const token = this.getToken();
-    localStorage.setItem(LoginName.token, token);
+    localStorage.setItem(LoginVariableNames.token, token);
     this.router.navigate(['/main']);
   }
 }

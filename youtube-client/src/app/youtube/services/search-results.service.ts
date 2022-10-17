@@ -16,6 +16,7 @@ export class SearchResultsService {
   public getCards(valueSearch: string) {
     this.saveCards(this.searchResult);
     this.searchEvent.emit();
+    return valueSearch;
   }
 
   public saveCards(cardsIn: Card[]) {

@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { SendSettingsSort } from 'src/app/app.component';
 import { Card } from 'src/app/youtube/models/card.model';
 import { CardsStateService } from 'src/app/youtube/services/cards-state.service';
-import response from 'src/assets/response/response.json';
 
 @Component({
   selector: 'app-cards',
