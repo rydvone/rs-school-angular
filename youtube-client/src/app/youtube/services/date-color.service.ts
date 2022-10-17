@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CardBorderColor } from '../constant/card';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class DateColorService {
   public getColor(date: string) {
     const datePublication = new Date(date).getTime();

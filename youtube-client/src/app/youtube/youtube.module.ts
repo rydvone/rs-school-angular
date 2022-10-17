@@ -11,6 +11,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ColorShadowCardDirective } from './directives/color-shadow-card.directive';
 import { ColorBackgroundDirective } from './directives/color-background.directive';
+import { YoutubeRoutingModule } from './youtube-routing.module';
+import { DateColorService } from './services/date-color.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ColorBackgroundDirective } from './directives/color-background.directiv
     ColorShadowCardDirective,
     ColorBackgroundDirective,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, YoutubeRoutingModule],
   exports: [SettingsComponent, CardsComponent, CardComponent, DetailedPageComponent, MainPageComponent],
+  providers: [DateColorService],
 })
 export class YoutubeModule {}

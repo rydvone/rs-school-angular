@@ -1,22 +1,15 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { LoginService } from 'src/app/auth/services/login.service';
+import { CanActivate, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: AuthService, private router: Router) {}
 
-  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    const isLogin = this.checkLogin();
-    console.log('isLOgin', isLogin);
-    return isLogin;
-  }
-
-  private checkLogin() {
-    const isLogin = this.loginService.checkLogin();
+  canActivate(): boolean {
+    const isLogin = this.loginService.isLocalStorageLogin();
     if (isLogin) {
       return true;
     }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../../services/login.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,7 +7,7 @@ import { LoginService } from '../../services/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: AuthService) {}
 
   public valueNickname = '';
 
@@ -16,11 +16,10 @@ export class LoginComponent {
   public isValidate = true;
 
   onLogin() {
-    this.checkValidate();
-    if (!this.isValidate) {
+    if (!this.valueNickname.length || !this.valuePassword.length) {
+      this.viewInvalidValidate();
       return null;
     }
-    console.log('login = ', this.valueNickname, ' pass = ', this.valuePassword, 'isValidate', this.isValidate);
     this.loginService.user = this.valueNickname;
     this.loginService.password = this.valuePassword;
     this.loginService.login();
@@ -28,7 +27,6 @@ export class LoginComponent {
   }
 
   onLogout() {
-    console.log('login = ', this.valueNickname, ' pass = ', this.valuePassword);
     this.loginService.logout();
   }
 
@@ -37,5 +35,12 @@ export class LoginComponent {
       this.isValidate = false;
     }
     this.isValidate = true;
+  }
+
+  viewInvalidValidate() {
+    this.isValidate = false;
+    setTimeout(() => {
+      this.isValidate = true;
+    }, 3000);
   }
 }

@@ -5,7 +5,7 @@ import { LoginVariableNames } from '../constant/login.constant';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class AuthService {
   private isLogin = false;
 
   constructor(private router: Router) {}
@@ -18,17 +18,7 @@ export class LoginService {
 
   public password = '';
 
-  public getIdFromUser(user: string) {
-    const userId = user.split(' ').join('&');
-    return userId;
-  }
-
-  public getUserFromId(userId: string) {
-    const user = userId.split('&').join(' ');
-    return user;
-  }
-
-  public getToken() {
+  private makeToken() {
     return `${this.user}${this.password}`;
   }
 
@@ -38,22 +28,18 @@ export class LoginService {
   }
 
   public logout() {
-    localStorage.removeItem(LoginVariableNames.token);
     this.isLogin = false;
+    localStorage.removeItem(LoginVariableNames.token);
     this.router.navigate(['/login']);
   }
 
-  public checkLogin() {
-    const token = localStorage.getItem(LoginVariableNames.token);
-    let stateLogin = false;
-    if (token) {
-      stateLogin = true;
-    }
-    return stateLogin;
+  public isLocalStorageLogin() {
+    const token = !!localStorage.getItem(LoginVariableNames.token);
+    return token;
   }
 
   public setAuth() {
-    const token = this.getToken();
+    const token = this.makeToken();
     localStorage.setItem(LoginVariableNames.token, token);
     this.router.navigate(['/main']);
   }
