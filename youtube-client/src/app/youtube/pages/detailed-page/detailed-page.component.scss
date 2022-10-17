@@ -20,6 +20,13 @@
   background-size: 32px 32px;
   border: transparent;
   border-radius: 4px 0 0 4px;
+  background-color: aqua;
+}
+
+.detailed__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .detailed__screen {
@@ -30,7 +37,8 @@
   margin: 0;
   border-radius: 0 0 0 5px;
   filter: drop-shadow(5px 10px 20px rgba(51, 51, 51, 0.25));
-  box-shadow: -5px 5px 20px rgba(51, 51, 51, 0.45);
+  // box-shadow: -5px 5px 20px rgba(51, 51, 51, 0.45);
+  // box-shadow: -5px 5px 20px #33333373;
 }
 
 .detailed__info {
@@ -43,7 +51,8 @@
   background-color: $color-grey;
   padding: 2.2em 2.2em 1.5em;
   border-radius: 0 5px 5px 0;
-  box-shadow: 5px 5px 20px rgba(51, 51, 51, 0.45);
+  // box-shadow: 5px 5px 20px rgba(51, 51, 51, 0.45);
+  // box-shadow: 5px 5px 20px #33333373;
 }
 
 .detailed__main-info {

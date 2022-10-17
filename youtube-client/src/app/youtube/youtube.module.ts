@@ -9,6 +9,8 @@ import { SortPipe } from './pipes/sort.pipe';
 import { FilterByWordPipe } from './pipes/filter-by-word.pipe';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SettingsComponent } from './components/settings/settings.component';
+import { ColorShadowCardDirective } from './directives/color-shadow-card.directive';
+import { ColorBackgroundDirective } from './directives/color-background.directive';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     SortPipe,
     FilterByWordPipe,
     MainPageComponent,
+    ColorShadowCardDirective,
+    ColorBackgroundDirective,
   ],
   imports: [CommonModule, FormsModule],
   exports: [SettingsComponent, CardsComponent, CardComponent, DetailedPageComponent, MainPageComponent],
