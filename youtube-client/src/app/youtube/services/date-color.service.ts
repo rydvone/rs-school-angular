@@ -6,9 +6,9 @@ export class DateColorService {
   public getColor(date: string) {
     const datePublication = new Date(date).getTime();
     const dateNow = Date.now();
-    const msInYear = 1000 * 60 * 60 * 24 * 365;
-    const msInMonth = 1000 * 60 * 60 * 24 * 30;
     const msInDay = 1000 * 60 * 60 * 24;
+    const msInMonth = msInDay * 30;
+    const msInYear = msInDay * 365;
 
     const countYear = Math.floor((dateNow - datePublication) / msInYear);
     if (countYear >= 1) {

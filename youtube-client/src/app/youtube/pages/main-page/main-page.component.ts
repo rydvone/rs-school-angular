@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { SettingsSort } from '../../constant/settings';
 import { SettingsSortDirection, SettingsSortType } from '../../models/settings.model';
 import { CardsStateService } from '../../services/cards-state.service';
 import { SearchResultsService } from '../../services/search-results.service';
 
-export interface SendSettingsSort {
+export interface SortingSettings {
   sortType: SettingsSortType;
   sortDirection: SettingsSortDirection;
 }
@@ -15,12 +15,14 @@ export interface SendSettingsSort {
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnInit {
   constructor(
     private headerService: HeaderService,
     private searchResultService: SearchResultsService,
     private cardsStateService: CardsStateService,
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.headerService.displaySettings.subscribe((state) => {
       this.visibleSettings = state;
     });
@@ -33,7 +35,7 @@ export class MainPageComponent {
 
   sendValueFilter = '';
 
-  sendSettingsSort: SendSettingsSort = {
+  sendSettingsSort: SortingSettings = {
     sortType: SettingsSort.type.none,
     sortDirection: SettingsSort.direction.none,
   };
@@ -41,10 +43,7 @@ export class MainPageComponent {
   visibleCards = this.displayCards();
 
   displayCards() {
-    if (this.cardsStateService.state.length) {
-      return true;
-    }
-    return false;
+    return !!this.cardsStateService.state.length;
   }
 
   onSortDateEvent(sortDirection: SettingsSortDirection) {

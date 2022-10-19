@@ -1,4 +1,9 @@
-<app-settings *ngIf="visibleSettings" (filterByWordEvent)="onFilterByWordEvent($event)" (sortDateEvent)="onSortDateEvent($event)" (sortCountEvent)="onSortCountEvent($event)"></app-settings>
+<app-settings
+  *ngIf="visibleSettings"
+  (filterByWordEvent)="onFilterByWordEvent($event)"
+  (sortDateEvent)="onSortDateEvent($event)"
+  (sortCountEvent)="onSortCountEvent($event)"
+></app-settings>
 <div class="page__wrapper">
   <app-cards *ngIf="visibleCards" [valueFilter]="sendValueFilter" [valueSort]="sendSettingsSort"></app-cards>
 </div>

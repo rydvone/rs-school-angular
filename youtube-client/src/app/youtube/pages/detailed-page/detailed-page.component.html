@@ -11,10 +11,7 @@
   <div class="detailed__main" [appColorShadowCard]="card.snippet.publishedAt">
     <img [src]="card.snippet.thumbnails.maxres.url" alt="title screen" class="detailed__screen" />
 
-    <div
-      class="detailed__info"
-      [appColorBorderCard]="card.snippet.publishedAt"
-    >
+    <div class="detailed__info" [appColorBorderCard]="card.snippet.publishedAt">
       <div class="detailed__main-info">
         <h2 class="detailed__title">{{ card.snippet.title }}</h2>
         <span class="detailed__date">{{ card.snippet.publishedAt | date: 'fullDate' }}</span>

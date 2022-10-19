@@ -20,7 +20,7 @@ export class HeaderService {
     this.displaySettings.emit(this.stateSettings);
   }
 
-  search(value: string) {
-    this.searchResultsService.getCards(value);
+  search() {
+    this.searchResultsService.getCards();
   }
 }

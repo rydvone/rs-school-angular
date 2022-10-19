@@ -1,5 +1,4 @@
-// import { SettingsSortName } from '../models/settings.model';
-interface ISettingsSort {
+interface SettingsSorting {
   type: {
     none: 'none';
     date: 'date';
@@ -12,7 +11,7 @@ interface ISettingsSort {
   };
 }
 
-export const SettingsSort: ISettingsSort = {
+export const SettingsSort: SettingsSorting = {
   type: {
     none: 'none',
     date: 'date',

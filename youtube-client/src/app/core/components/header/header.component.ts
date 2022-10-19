@@ -17,7 +17,7 @@ export class HeaderComponent {
   public buttonSettingsColor: string = this.headerService.colorSettings;
 
   public onSearch() {
-    this.headerService.search(this.valueSearch);
+    this.headerService.search();
   }
 
   public showSettings() {

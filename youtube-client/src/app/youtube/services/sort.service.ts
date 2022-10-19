@@ -12,13 +12,13 @@ export class SortService {
       return { ...obj, publishedAt: new Date(obj.snippet.publishedAt) };
     });
     if (direction === SettingsSort.direction.asc) {
-      return [...cardsDate].sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+      return cardsDate.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
     }
-    return [...cardsDate].sort((a, b) => a.publishedAt.getTime() - b.publishedAt.getTime());
+    return cardsDate.sort((a, b) => a.publishedAt.getTime() - b.publishedAt.getTime());
   }
 
   sortCount(cards: Card[], direction: SettingsSortDirection): Card[] {
-    const cardsCount = cards;
+    const cardsCount = cards.slice();
     if (direction === SettingsSort.direction.asc) {
       return cardsCount.sort((a, b) => Number(a.statistics.viewCount) - Number(b.statistics.viewCount));
     }
