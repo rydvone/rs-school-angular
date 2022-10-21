@@ -1,35 +1,80 @@
-<div [ngClass]="['login', isValidate ? '' : 'login_invalid']">
-  <h2 class="login__title">Login</h2>
-  <form class="login__input_wrapper">
-    <label for="login__input_login" class="login__text">login:</label>
-    <input
-      type="text"
-      class="login__input login__input_login"
-      id="login__input_login"
-      placeholder="you name..."
-      pattern="[0-9A-Za-z\s]{1,8}"
-      title="1 to 8 letters or number or white-space"
-      name="valueNickname"
-      [(ngModel)]="valueNickname"
-    />
+<div>
+  <form class="login__form" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+    <h2 class="login__title">Login</h2>
+    <div class="login__input_wrapper">
+      <label for="login__input_login" class="login__text">login:</label>
+      <input
+        type="text"
+        class="login__input login__input_login"
+        id="login__input_login"
+        formControlName="login"
+        placeholder="you name..."
+        title="......."
+      />
+      <div
+        class="input__explainer"
+        *ngIf="
+          formLogin.get('login')?.invalid && formLogin.get('login')?.touched
+        "
+      >
+        <small *ngIf="formLogin.get('login')?.errors?.['required']">
+          {{ message.login.required }}
+        </small>
+        <small *ngIf="formLogin.get('login')?.errors?.['email']">
+          {{ message.login.invalid.common }}
+        </small>
+      </div>
+    </div>
+    <div class="login__input_wrapper">
+      <label for="login__input_password" class="login__text">password:</label>
+      <input
+        type="password"
+        class="login__input login__input_password"
+        id="login__input_password"
+        formControlName="password"
+        placeholder="*******"
+        autocomplete="off"
+        maxlength="10"
+      />
+      <div
+        class="input__explainer"
+        *ngIf="
+          formLogin.get('password')?.invalid &&
+          formLogin.get('password')?.touched
+        "
+      >
+        <small *ngIf="formLogin.get('password')?.errors?.['required']">
+          {{ message.password.required }}
+        </small>
+        <small *ngIf="!formLogin.get('password')?.errors?.['required']">
+          {{ message.password.invalid.common }}
+        </small>
+        <small *ngIf="formLogin.get('password')?.errors?.['minlength']">
+          {{ message.password.invalid.minLength }}
+        </small>
+        <small *ngIf="formLogin.get('password')?.errors?.['lowerUpperCase']">
+          {{ message.password.invalid.lowerUpperCase }}
+        </small>
+        <small *ngIf="formLogin.get('password')?.errors?.['lettersAndNumbers']">
+          {{ message.password.invalid.lettersAndNumbers }}
+        </small>
+        <small *ngIf="formLogin.get('password')?.errors?.['specialCharacter']">
+          {{ message.password.invalid.specialCharacter }}
+        </small>
+      </div>
+    </div>
+    <div class="login__button-wrapper">
+      <button
+        class="login__button"
+        type="submit"
+        [disabled]="formLogin.invalid"
+      >
+        Login
+      </button>
+      <button class="login__button" (click)="onLogout()" type="button">
+        Logout
+      </button>
+    </div>
   </form>
-  <form class="login__input_wrapper">
-    <label for="login__input_password" class="login__text">password:</label>
-    <input
-      type="password"
-      class="login__input login__input_password"
-      id="login__input_password"
-      placeholder="*******"
-      autocomplete="off"
-      name="valuePassword"
-      [(ngModel)]="valuePassword"
-      minlength="1"
-      maxlength="8"
-      required
-    />
-  </form>
-  <div class="login__button-wrapper">
-    <button class="login__button" (click)="onLogin()">Login</button>
-    <button class="login__button" (click)="onLogout()">Logout</button>
-  </div>
+  <pre>{{ formLogin.get("password")?.errors | json }}</pre>
 </div>

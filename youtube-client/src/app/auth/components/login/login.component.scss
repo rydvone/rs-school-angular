@@ -7,7 +7,7 @@
   margin: 10% auto;
 }
 
-.login {
+.login__form {
   width: 350px;
   height: 300px;
   display: flex;
@@ -18,16 +18,6 @@
   margin: 0 auto;
   padding: 22px 20px;
   border-radius: 5px;
-
-  @keyframes errorAnimat {
-    0% {
-      transition: box-shadow 3s ease-in-out;
-      box-shadow: inset 10px 0 0 4em red;
-    }
-  }
-  &.login_invalid {
-    animation: errorAnimat ease-in 1s backwards;
-  }
 }
 
 .login__title {
@@ -58,6 +48,16 @@
   box-shadow: 0 0 2vw 0.4vh rgba(255, 255, 230, 0.06);
   padding: 0.1em 0.5em;
   border-radius: 0.2em;
+}
+
+.login__input_login,
+.login__input_password {
+  &.ng-invalid.ng-touched {
+    border: 0.15em solid $color-input-invalid;
+  }
+  &.ng-valid {
+    border: 0.1em solid $color-input-valid;
+  }
 }
 
 .login__button-wrapper {
