@@ -12,13 +12,13 @@
         autocomplete="off"
       />
       <div class="input__explainer" *ngIf="formCard.get('title')?.invalid && formCard.get('title')?.touched">
-        <small class="card-create__message" *ngIf="formCard.get('title')?.errors?.['required']">
+        <small *ngIf="hasFieldError('title', 'required')">
           {{ message.title.required }}
         </small>
-        <small *ngIf="formCard.get('title')?.errors?.['minlength']">
+        <small *ngIf="hasFieldError('title', 'minlength')">
           {{ message.title.minLength }}
         </small>
-        <small *ngIf="formCard.get('title')?.errors?.['maxlength']">
+        <small *ngIf="hasFieldError('title', 'maxlength')">
           {{ message.title.maxLength }}
         </small>
       </div>
@@ -38,7 +38,7 @@
         class="input__explainer"
         *ngIf="formCard.get('description')?.invalid && formCard.get('description')?.touched"
       >
-        <small *ngIf="formCard.get('description')?.errors?.['maxlength']">
+        <small *ngIf="hasFieldError('description', 'maxlength')">
           {{ message.description.maxLength }}
         </small>
       </div>
@@ -55,10 +55,10 @@
         autocomplete="off"
       />
       <div class="input__explainer" *ngIf="formCard.get('linkImage')?.invalid && formCard.get('linkImage')?.touched">
-        <small *ngIf="formCard.get('linkImage')?.errors?.['required']">
+        <small *ngIf="hasFieldError('linkImage', 'required')">
           {{ message.linkImage.required }}
         </small>
-        <small *ngIf="formCard.get('linkImage')?.errors?.['pattern']">
+        <small *ngIf="hasFieldError('linkImage', 'pattern')">
           {{ message.linkImage.url }}
         </small>
       </div>
@@ -75,10 +75,10 @@
         autocomplete="off"
       />
       <div class="input__explainer" *ngIf="formCard.get('linkVideo')?.invalid && formCard.get('linkVideo')?.touched">
-        <small *ngIf="formCard.get('linkVideo')?.errors?.['required']">
+        <small *ngIf="hasFieldError('linkVideo', 'required')">
           {{ message.linkVideo.required }}
         </small>
-        <small *ngIf="formCard.get('linkVideo')?.errors?.['pattern']">
+        <small *ngIf="hasFieldError('linkVideo', 'pattern')">
           {{ message.linkVideo.url }}
         </small>
       </div>
@@ -98,10 +98,10 @@
         class="input__explainer"
         *ngIf="formCard.get('dateCreation')?.invalid && formCard.get('dateCreation')?.touched"
       >
-        <small *ngIf="formCard.get('dateCreation')?.errors?.['required']">
+        <small *ngIf="hasFieldError('dateCreation', 'required')">
           {{ message.dateCreation.required }}
         </small>
-        <small *ngIf="formCard.get('dateCreation')?.errors?.['correctDate']">
+        <small *ngIf="hasFieldError('dateCreation', 'correctDate')">
           {{ message.dateCreation.date }}
         </small>
       </div>

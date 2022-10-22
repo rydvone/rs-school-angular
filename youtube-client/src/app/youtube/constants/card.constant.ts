@@ -1,4 +1,4 @@
-export const CardBorderColor = {
+export const CARD_BORDER_COLOR = {
   zero: 'transparent',
   one: '#2f80ed',
   two: '#27ae60',

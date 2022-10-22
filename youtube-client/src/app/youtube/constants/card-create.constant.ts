@@ -1,8 +1,8 @@
-export const MinLengthTitleCardCreate = 3;
-export const MaxLengthTitleCardCreate = 20;
-export const MaxLengthDescriptionCardCreate = 255;
+export const MIN_LENGTH_TITLE_CARD_CREATE = 3;
+export const MAX_LENGTH_TITLE_CARD_CREATE = 20;
+export const MAX_LENGTH_DESCRIPTION_CARD_CREATE = 255;
 
-export const CardCreateValidationText = {
+export const CARD_CREATE_VALIDATION_TEXT = {
   title: {
     required: 'Please enter a title',
     minLength: 'The title is too short',

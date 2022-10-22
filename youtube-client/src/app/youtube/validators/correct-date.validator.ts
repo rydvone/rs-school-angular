@@ -1,14 +1,10 @@
 import { FormControl } from '@angular/forms';
-
-export interface ValidationResult {
-  [key: string]: boolean;
-}
+import { ValidationResult } from '../models/validator.model';
 
 export function correctDateValidator(control: FormControl): ValidationResult | null {
   const currentDate = Date.now();
   const publicationDate = new Date(control.value).getTime();
-  const valid = publicationDate <= currentDate;
-  if (!valid) {
+  if (publicationDate > currentDate) {
     return { correctDate: true };
   }
   return null;

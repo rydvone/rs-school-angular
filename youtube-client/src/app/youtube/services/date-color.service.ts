@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CardBorderColor } from '../constants/card.constant';
+import { CARD_BORDER_COLOR } from '../constants/card.constant';
 
 @Injectable()
 export class DateColorService {
@@ -12,22 +12,22 @@ export class DateColorService {
 
     const countYear = Math.floor((dateNow - datePublication) / msInYear);
     if (countYear >= 1) {
-      return CardBorderColor.four;
+      return CARD_BORDER_COLOR.four;
     }
     const countMonth = Math.floor((dateNow - datePublication) / msInMonth);
     if (countMonth > 6) {
-      return CardBorderColor.four;
+      return CARD_BORDER_COLOR.four;
     }
     if (countMonth < 6 && countMonth > 1) {
-      return CardBorderColor.three;
+      return CARD_BORDER_COLOR.three;
     }
     const countDay = Math.floor((dateNow - datePublication) / msInDay);
     if (countDay > 7) {
-      return CardBorderColor.two;
+      return CARD_BORDER_COLOR.two;
     }
     if (countDay <= 7) {
-      return CardBorderColor.one;
+      return CARD_BORDER_COLOR.one;
     }
-    return CardBorderColor.zero;
+    return CARD_BORDER_COLOR.zero;
   }
 }

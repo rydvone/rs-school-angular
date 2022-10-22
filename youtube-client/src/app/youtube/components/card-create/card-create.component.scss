@@ -59,9 +59,6 @@ small {
   &.ng-invalid.ng-touched {
     border: 0.15em solid $color-input-invalid;
   }
-  &.ng-valid {
-    border: 0.1em solid $color-input-valid;
-  }
 }
 
 .card-create__button {

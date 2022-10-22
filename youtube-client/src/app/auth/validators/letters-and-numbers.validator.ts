@@ -1,14 +1,11 @@
 import { FormControl } from '@angular/forms';
-
-export interface ValidationResult {
-  [key: string]: boolean;
-}
+import { ValidationResult } from '../models/validator.model';
 
 export function lettersAndNumbersValidator(control: FormControl): ValidationResult | null {
   const hasNumber = /\d/.test(control.value);
   const hasLetter = /[a-zA-Z]/.test(control.value);
-  const valid = hasNumber && hasLetter;
-  if (!valid) {
+  const isValid = hasNumber && hasLetter;
+  if (!isValid) {
     return { lettersAndNumbers: true };
   }
   return null;

@@ -7,20 +7,15 @@
         type="text"
         class="login__input login__input_login"
         id="login__input_login"
-        formControlName="login"
+        formControlName="email"
         placeholder="you name..."
         title="......."
       />
-      <div
-        class="input__explainer"
-        *ngIf="
-          formLogin.get('login')?.invalid && formLogin.get('login')?.touched
-        "
-      >
-        <small *ngIf="formLogin.get('login')?.errors?.['required']">
+      <div class="input__explainer" *ngIf="formLogin.get('email')?.invalid && formLogin.get('email')?.touched">
+        <small *ngIf="hasFieldError('email', 'required')">
           {{ message.login.required }}
         </small>
-        <small *ngIf="formLogin.get('login')?.errors?.['email']">
+        <small *ngIf="hasFieldError('email', 'email')">
           {{ message.login.invalid.common }}
         </small>
       </div>
@@ -36,44 +31,30 @@
         autocomplete="off"
         maxlength="10"
       />
-      <div
-        class="input__explainer"
-        *ngIf="
-          formLogin.get('password')?.invalid &&
-          formLogin.get('password')?.touched
-        "
-      >
-        <small *ngIf="formLogin.get('password')?.errors?.['required']">
+      <div class="input__explainer" *ngIf="formLogin.get('password')?.invalid && formLogin.get('password')?.touched">
+        <small *ngIf="hasFieldError('password', 'required')">
           {{ message.password.required }}
         </small>
-        <small *ngIf="!formLogin.get('password')?.errors?.['required']">
+        <small *ngIf="!hasFieldError('password', 'required')">
           {{ message.password.invalid.common }}
         </small>
-        <small *ngIf="formLogin.get('password')?.errors?.['minlength']">
+        <small *ngIf="hasFieldError('password', 'minlength')">
           {{ message.password.invalid.minLength }}
         </small>
-        <small *ngIf="formLogin.get('password')?.errors?.['lowAndUpperCase']">
+        <small *ngIf="hasFieldError('password', 'lowAndUpperCase')">
           {{ message.password.invalid.lowAndUpperCase }}
         </small>
-        <small *ngIf="formLogin.get('password')?.errors?.['lettersAndNumbers']">
+        <small *ngIf="hasFieldError('password', 'lettersAndNumbers')">
           {{ message.password.invalid.lettersAndNumbers }}
         </small>
-        <small *ngIf="formLogin.get('password')?.errors?.['specialCharacter']">
+        <small *ngIf="hasFieldError('password', 'specialCharacter')">
           {{ message.password.invalid.specialCharacter }}
         </small>
       </div>
     </div>
     <div class="login__button-wrapper">
-      <button
-        class="login__button"
-        type="submit"
-        [disabled]="formLogin.invalid"
-      >
-        Login
-      </button>
-      <button class="login__button" (click)="onLogout()" type="button">
-        Logout
-      </button>
+      <button class="login__button" type="submit" [disabled]="formLogin.invalid">Login</button>
+      <button class="login__button" (click)="onLogout()" type="button">Logout</button>
     </div>
   </form>
 </div>

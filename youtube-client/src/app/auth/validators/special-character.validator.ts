@@ -1,13 +1,9 @@
 import { FormControl } from '@angular/forms';
-
-export interface ValidationResult {
-  [key: string]: boolean;
-}
+import { ValidationResult } from '../models/validator.model';
 
 export function specialCharacterValidator(control: FormControl): ValidationResult | null {
   const hasSpecial = /[!@#$%]/.test(control.value);
-  const valid = hasSpecial;
-  if (!valid) {
+  if (!hasSpecial) {
     return { specialCharacter: true };
   }
   return null;

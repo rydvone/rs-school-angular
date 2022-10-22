@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginVariableNames } from '../constants/login.constant';
+import { LOGIN_VARIABLE_NAMES } from '../constants/login.constant';
 
 @Injectable({
   providedIn: 'root',
@@ -10,37 +10,25 @@ export class AuthService {
 
   constructor(private router: Router) {}
 
-  public tokenKey = 'QweAsdZcx';
-
-  public token = '';
-
-  public user = '';
-
-  public password = '';
-
-  private makeToken() {
-    return `${this.user}#${this.password}`;
-  }
-
-  public login() {
+  public login(user: string, password: string) {
     this.isLogin = true;
-    this.setAuth();
+    this.setAuth(user, password);
   }
 
   public logout() {
     this.isLogin = false;
-    localStorage.removeItem(LoginVariableNames.token);
+    localStorage.removeItem(LOGIN_VARIABLE_NAMES.token);
     this.router.navigate(['/login']);
   }
 
   public isLocalStorageLogin() {
-    const token = !!localStorage.getItem(LoginVariableNames.token);
+    const token = !!localStorage.getItem(LOGIN_VARIABLE_NAMES.token);
     return token;
   }
 
-  public setAuth() {
-    const token = this.makeToken();
-    localStorage.setItem(LoginVariableNames.token, token);
+  private setAuth(user: string, password: string) {
+    const token = `${user}#${password}`;
+    localStorage.setItem(LOGIN_VARIABLE_NAMES.token, token);
     this.router.navigate(['/main']);
   }
 }

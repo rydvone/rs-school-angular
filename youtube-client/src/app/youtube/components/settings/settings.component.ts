@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SettingsSort, SettingsSortViewDirection } from '../../constants/settings.constat';
+import { SETTINGS_SORT, SETTINGS_SORT_VIEW_DIRECTION } from '../../constants/settings.constat';
 import { SettingsSortType } from '../../models/settings.model';
 import { SettingsState } from '../../models/settings.state';
 
@@ -36,8 +36,8 @@ export class SettingsComponent {
     Object.keys(this.sortSettings.viewSort).forEach((key) => {
       const keyInner = key as SettingsSortType;
       if (keyInner !== sort) {
-        this.sortSettings.viewSort[keyInner] = SettingsSortViewDirection.none;
-        SettingsState.sort[keyInner] = SettingsSortViewDirection.none;
+        this.sortSettings.viewSort[keyInner] = SETTINGS_SORT_VIEW_DIRECTION.none;
+        SettingsState.sort[keyInner] = SETTINGS_SORT_VIEW_DIRECTION.none;
       }
     });
   }
@@ -46,29 +46,29 @@ export class SettingsComponent {
     this.clearInactiveViewSort(this.sortType);
 
     if (
-      this.sortSettings.viewSort[sort] === SettingsSortViewDirection.none ||
-      this.sortSettings.viewSort[sort] === SettingsSortViewDirection.desc
+      this.sortSettings.viewSort[sort] === SETTINGS_SORT_VIEW_DIRECTION.none ||
+      this.sortSettings.viewSort[sort] === SETTINGS_SORT_VIEW_DIRECTION.desc
     ) {
-      this.sortSettings.viewSort[sort] = SettingsSortViewDirection.asc;
-      SettingsState.sort[sort] = SettingsSortViewDirection.asc;
-      this.sortSettings.direction[sort] = SettingsSort.direction.asc;
+      this.sortSettings.viewSort[sort] = SETTINGS_SORT_VIEW_DIRECTION.asc;
+      SettingsState.sort[sort] = SETTINGS_SORT_VIEW_DIRECTION.asc;
+      this.sortSettings.direction[sort] = SETTINGS_SORT.direction.asc;
     } else {
-      this.sortSettings.viewSort[sort] = SettingsSortViewDirection.desc;
-      SettingsState.sort[sort] = SettingsSortViewDirection.desc;
-      this.sortSettings.direction[sort] = SettingsSort.direction.desc;
+      this.sortSettings.viewSort[sort] = SETTINGS_SORT_VIEW_DIRECTION.desc;
+      SettingsState.sort[sort] = SETTINGS_SORT_VIEW_DIRECTION.desc;
+      this.sortSettings.direction[sort] = SETTINGS_SORT.direction.desc;
     }
   }
 
   onSortDate() {
-    SettingsState.sortType = SettingsSort.type.date;
-    this.sortType = SettingsSort.type.date;
+    SettingsState.sortType = SETTINGS_SORT.type.date;
+    this.sortType = SETTINGS_SORT.type.date;
     this.changeViewDirectionSort(this.sortType);
     this.sortDateEvent.emit(this.sortSettings.direction.date);
   }
 
   onSortCount() {
-    SettingsState.sortType = SettingsSort.type.count;
-    this.sortType = SettingsSort.type.count;
+    SettingsState.sortType = SETTINGS_SORT.type.count;
+    this.sortType = SETTINGS_SORT.type.count;
     this.changeViewDirectionSort(this.sortType);
     this.sortCountEvent.emit(this.sortSettings.direction.count);
   }

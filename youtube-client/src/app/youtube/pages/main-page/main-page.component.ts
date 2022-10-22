@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/core/services/header.service';
-import { SettingsSort } from '../../constants/settings.constat';
+import { SETTINGS_SORT } from '../../constants/settings.constat';
 import { SettingsSortDirection, SettingsSortType } from '../../models/settings.model';
 import { CardsStateService } from '../../services/cards-state.service';
 import { SearchResultsService } from '../../services/search-results.service';
@@ -36,8 +36,8 @@ export class MainPageComponent implements OnInit {
   sendValueFilter = '';
 
   sendSettingsSort: SortingSettings = {
-    sortType: SettingsSort.type.none,
-    sortDirection: SettingsSort.direction.none,
+    sortType: SETTINGS_SORT.type.none,
+    sortDirection: SETTINGS_SORT.direction.none,
   };
 
   visibleCards = this.displayCards();
@@ -47,12 +47,12 @@ export class MainPageComponent implements OnInit {
   }
 
   onSortDateEvent(sortDirection: SettingsSortDirection) {
-    this.sendSettingsSort.sortType = SettingsSort.type.date;
+    this.sendSettingsSort.sortType = SETTINGS_SORT.type.date;
     this.sendSettingsSort.sortDirection = sortDirection;
   }
 
   onSortCountEvent(sortDirection: SettingsSortDirection) {
-    this.sendSettingsSort.sortType = SettingsSort.type.count;
+    this.sendSettingsSort.sortType = SETTINGS_SORT.type.count;
     this.sendSettingsSort.sortDirection = sortDirection;
   }
 

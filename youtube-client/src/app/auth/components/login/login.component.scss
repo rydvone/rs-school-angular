@@ -52,15 +52,9 @@ small {
   box-shadow: 0 0 2vw 0.4vh rgba(255, 255, 230, 0.06);
   padding: 0.1em 0.5em;
   border-radius: 0.2em;
-}
 
-.login__input_login,
-.login__input_password {
   &.ng-invalid.ng-touched {
     border: 0.15em solid $color-input-invalid;
-  }
-  &.ng-valid {
-    border: 0.1em solid $color-input-valid;
   }
 }
 
