@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginVariableNames } from '../constant/login.constant';
+import { LoginVariableNames } from '../constants/login.constant';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class AuthService {
   public password = '';
 
   private makeToken() {
-    return `${this.user}${this.password}`;
+    return `${this.user}#${this.password}`;
   }
 
   public login() {

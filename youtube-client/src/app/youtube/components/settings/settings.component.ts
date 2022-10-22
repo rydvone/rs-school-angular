@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { SettingsSort, SettingsSortViewDirection } from '../../constant/settings';
+import { SettingsSort, SettingsSortViewDirection } from '../../constants/settings.constat';
 import { SettingsSortType } from '../../models/settings.model';
 import { SettingsState } from '../../models/settings.state';
 

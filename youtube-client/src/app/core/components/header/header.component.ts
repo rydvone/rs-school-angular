@@ -17,6 +17,7 @@ export class HeaderComponent {
   public buttonSettingsColor: string = this.headerService.colorSettings;
 
   public onSearch() {
+    this.router.navigate(['/main']);
     this.headerService.search();
   }
 
@@ -27,5 +28,9 @@ export class HeaderComponent {
 
   public goToLogin() {
     this.router.navigate(['/login']);
+  }
+
+  public goToAdminPage() {
+    this.router.navigate(['/main/card-create']);
   }
 }

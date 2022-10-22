@@ -52,8 +52,8 @@
         <small *ngIf="formLogin.get('password')?.errors?.['minlength']">
           {{ message.password.invalid.minLength }}
         </small>
-        <small *ngIf="formLogin.get('password')?.errors?.['lowerUpperCase']">
-          {{ message.password.invalid.lowerUpperCase }}
+        <small *ngIf="formLogin.get('password')?.errors?.['lowAndUpperCase']">
+          {{ message.password.invalid.lowAndUpperCase }}
         </small>
         <small *ngIf="formLogin.get('password')?.errors?.['lettersAndNumbers']">
           {{ message.password.invalid.lettersAndNumbers }}
@@ -76,5 +76,4 @@
       </button>
     </div>
   </form>
-  <pre>{{ formLogin.get("password")?.errors | json }}</pre>
 </div>

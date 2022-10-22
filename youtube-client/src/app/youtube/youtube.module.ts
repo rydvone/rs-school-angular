@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
 import { CardsComponent } from './components/search-results/cards/cards.component';
 import { CardComponent } from './components/search-results/card/card.component';
@@ -13,6 +13,8 @@ import { ColorShadowCardDirective } from './directives/color-shadow-card.directi
 import { ColorBackgroundDirective } from './directives/color-background.directive';
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { DateColorService } from './services/date-color.service';
+import { CardCreateComponent } from './components/card-create/card-create.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +28,10 @@ import { DateColorService } from './services/date-color.service';
     MainPageComponent,
     ColorShadowCardDirective,
     ColorBackgroundDirective,
+    CardCreateComponent,
+    AdminPageComponent,
   ],
-  imports: [CommonModule, FormsModule, YoutubeRoutingModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, YoutubeRoutingModule],
   exports: [SettingsComponent, CardsComponent, CardComponent, DetailedPageComponent, MainPageComponent],
   providers: [DateColorService],
 })

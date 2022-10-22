@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SettingsSort } from '../constant/settings';
+import { SettingsSort } from '../constants/settings.constat';
 import { Card } from '../models/card.model';
 import { SettingsSortDirection, SettingsSortType } from '../models/settings.model';
 import { SortService } from '../services/sort.service';

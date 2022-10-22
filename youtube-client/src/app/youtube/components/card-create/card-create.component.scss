@@ -1,43 +1,43 @@
-@import '_colors';
-
-:host {
-  display: flex;
-  justify-content: center;
-  padding: 1em 1em;
-  margin: 10% auto;
-}
+@import "_colors";
 
 small {
   color: $color-input-invalid;
 }
 
-.login__form {
-  width: 350px;
-  height: 300px;
+.card-create {
+  width: 435px;
+  height: 560px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-self: center;
+  gap: 10px;
   background-color: $color-module-bgc;
   margin: 0 auto;
-  padding: 22px 20px;
-  border-radius: 5px;
+  padding: 2em 2.4em;
+  border-radius: 10px;
 }
 
-.login__title {
+.card-create__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 5px;
+}
+
+.card-create__title {
   font-weight: 700;
   font-size: 1.4em;
   line-height: 1.2;
-  margin: 0;
+  margin: 0.4em 0;
   padding: 0 0 0 0.5rem;
 }
 
-.login__input_wrapper {
+.card-create__input_wrapper {
   display: flex;
   flex-direction: column;
 }
 
-.login__text {
+.card-create__text {
   align-self: flex-start;
   color: $color-grey-text;
   font-size: 0.8em;
@@ -45,17 +45,17 @@ small {
   padding: 0 0 0.15em 0.5rem;
 }
 
-.login__input_login,
-.login__input_password {
+.input__explainer-wrapper {
+  min-height: 22px;
+}
+
+.card-create__input {
   height: 37px;
   background-color: $color-grey-input;
   box-shadow: 0 0 2vw 0.4vh rgba(255, 255, 230, 0.06);
   padding: 0.1em 0.5em;
   border-radius: 0.2em;
-}
-
-.login__input_login,
-.login__input_password {
+  
   &.ng-invalid.ng-touched {
     border: 0.15em solid $color-input-invalid;
   }
@@ -64,13 +64,7 @@ small {
   }
 }
 
-.login__button-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.7em;
-}
-
-.login__button {
+.card-create__button {
   align-self: flex-end;
   width: 124px;
   height: 30px;
@@ -83,14 +77,14 @@ small {
 }
 
 @media (max-width: 1023.98px) {
-  .login {
+  .card-create {
     width: 40vw;
     padding: 1.4em 1.2em;
   }
 }
 
 @media (max-width: 767.98px) {
-  .login {
+  .card-create {
     width: 60vw;
   }
 }

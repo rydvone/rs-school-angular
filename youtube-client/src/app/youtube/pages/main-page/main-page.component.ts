@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/core/services/header.service';
-import { SettingsSort } from '../../constant/settings';
+import { SettingsSort } from '../../constants/settings.constat';
 import { SettingsSortDirection, SettingsSortType } from '../../models/settings.model';
 import { CardsStateService } from '../../services/cards-state.service';
 import { SearchResultsService } from '../../services/search-results.service';

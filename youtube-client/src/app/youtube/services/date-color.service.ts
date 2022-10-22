@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CardBorderColor } from '../constant/card';
+import { CardBorderColor } from '../constants/card.constant';
 
 @Injectable()
 export class DateColorService {
