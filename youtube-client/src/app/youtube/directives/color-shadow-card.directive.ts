@@ -13,6 +13,6 @@ export class ColorShadowCardDirective {
 
   setColorShadow(date: string) {
     const color = this.dateColorService.getColor(date);
-    this.render.setStyle(this.el.nativeElement, 'boxShadow', `5px 5px 20px ${color}73`);
+    this.render.setStyle(this.el.nativeElement, 'boxShadow', `8px 8px 20px ${color}73`);
   }
 }

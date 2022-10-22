@@ -16,10 +16,15 @@
 .detailed__back-button {
   width: 32px;
   height: 32px;
+  color: $color-white;
+  font-size: 1.8em;
+  text-shadow: 0 0 0.05em $color-white;
   background-repeat: no-repeat;
   background-size: 32px 32px;
   border: transparent;
   border-radius: 4px 0 0 4px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .detailed__main {
@@ -75,6 +80,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.6em;
+  overflow-y: auto;
+
 }
 
 .detailed__description_title {
@@ -86,7 +93,6 @@
   color: $color-grey-text;
   font-size: 0.8em;
   padding: 0 0 2em;
-  overflow-y: auto;
 }
 
 .detailed__statistics {

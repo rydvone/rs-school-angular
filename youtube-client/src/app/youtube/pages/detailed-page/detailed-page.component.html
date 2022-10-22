@@ -2,11 +2,10 @@
   <div class="detailed__back-button_wrapper">
     <button
       class="detailed__back-button"
-      [ngStyle]="{
-        background: 'url(./assets/image/detailed/detailed__button-back.svg)'
-      }"
+      [appColorBackground]="card.snippet.publishedAt"
+      [appColorShadowCard]="card.snippet.publishedAt"
       (click)="goToMainPage()"
-    ></button>
+    >&lt;</button>
   </div>
   <div class="detailed__main" [appColorShadowCard]="card.snippet.publishedAt">
     <img [src]="card.snippet.thumbnails.maxres.url" alt="title screen" class="detailed__screen" />
@@ -17,8 +16,9 @@
         <span class="detailed__date">{{ card.snippet.publishedAt | date: 'fullDate' }}</span>
       </div>
 
+      <div class="detailed__description_title">Description:</div>
+
       <div class="detailed__description">
-        <div class="detailed__description_title">Description:</div>
         <div class="detailed__description_text">
           {{ card.snippet.description }}
         </div>
