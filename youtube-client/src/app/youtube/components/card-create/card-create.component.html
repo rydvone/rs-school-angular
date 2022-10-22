@@ -1,0 +1,111 @@
+<form class="card-create" [formGroup]="formCard" (ngSubmit)="onSubmit()">
+  <div class="card-create__wrapper">
+    <h2 class="card-create__title">Card create</h2>
+    <div class="card-create__input_wrapper">
+      <label for="card-create__input_title" class="card-create__text"> title: </label>
+      <input
+        type="text"
+        class="card-create__input"
+        id="card-create__input_title"
+        formControlName="title"
+        placeholder="title..."
+        autocomplete="off"
+      />
+      <div class="input__explainer" *ngIf="formCard.get('title')?.invalid && formCard.get('title')?.touched">
+        <small *ngIf="hasFieldError('title', 'required')">
+          {{ message.title.required }}
+        </small>
+        <small *ngIf="hasFieldError('title', 'minlength')">
+          {{ message.title.minLength }}
+        </small>
+        <small *ngIf="hasFieldError('title', 'maxlength')">
+          {{ message.title.maxLength }}
+        </small>
+      </div>
+    </div>
+
+    <div class="card-create__input_wrapper">
+      <label for="card-create__input_description" class="card-create__text"> description: </label>
+      <input
+        type="text"
+        class="card-create__input"
+        id="card-create__input_description"
+        placeholder="description..."
+        formControlName="description"
+        autocomplete="off"
+      />
+      <div
+        class="input__explainer"
+        *ngIf="formCard.get('description')?.invalid && formCard.get('description')?.touched"
+      >
+        <small *ngIf="hasFieldError('description', 'maxlength')">
+          {{ message.description.maxLength }}
+        </small>
+      </div>
+    </div>
+
+    <div class="card-create__input_wrapper">
+      <label for="card-create__input_img" class="card-create__text">img:</label>
+      <input
+        type="text"
+        class="card-create__input"
+        id="card-create__input_img"
+        formControlName="linkImage"
+        placeholder="link image..."
+        autocomplete="off"
+      />
+      <div class="input__explainer" *ngIf="formCard.get('linkImage')?.invalid && formCard.get('linkImage')?.touched">
+        <small *ngIf="hasFieldError('linkImage', 'required')">
+          {{ message.linkImage.required }}
+        </small>
+        <small *ngIf="hasFieldError('linkImage', 'pattern')">
+          {{ message.linkImage.url }}
+        </small>
+      </div>
+    </div>
+
+    <div class="card-create__input_wrapper">
+      <label for="card-create__input_link" class="card-create__text"> link video: </label>
+      <input
+        type="text"
+        class="card-create__input"
+        id="card-create__input_link"
+        formControlName="linkVideo"
+        placeholder="link video..."
+        autocomplete="off"
+      />
+      <div class="input__explainer" *ngIf="formCard.get('linkVideo')?.invalid && formCard.get('linkVideo')?.touched">
+        <small *ngIf="hasFieldError('linkVideo', 'required')">
+          {{ message.linkVideo.required }}
+        </small>
+        <small *ngIf="hasFieldError('linkVideo', 'pattern')">
+          {{ message.linkVideo.url }}
+        </small>
+      </div>
+    </div>
+
+    <div class="card-create__input_wrapper">
+      <label for="card-create__input_date" class="card-create__text">date:</label>
+      <input
+        type="date"
+        class="card-create__input"
+        id="card-create__input_date"
+        formControlName="dateCreation"
+        placeholder="date creation..."
+        autocomplete="off"
+      />
+      <div
+        class="input__explainer"
+        *ngIf="formCard.get('dateCreation')?.invalid && formCard.get('dateCreation')?.touched"
+      >
+        <small *ngIf="hasFieldError('dateCreation', 'required')">
+          {{ message.dateCreation.required }}
+        </small>
+        <small *ngIf="hasFieldError('dateCreation', 'correctDate')">
+          {{ message.dateCreation.date }}
+        </small>
+      </div>
+    </div>
+  </div>
+  <button class="card-create__button" type="submit" [disabled]="formCard.invalid">Card Create</button>
+</form>

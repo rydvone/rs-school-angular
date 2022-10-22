@@ -1,0 +1,47 @@
+<div class="detailed">
+  <div class="detailed__back-button_wrapper">
+    <button
+      class="detailed__back-button"
+      [appColorBackground]="card.snippet.publishedAt"
+      [appColorShadowCard]="card.snippet.publishedAt"
+      (click)="goToMainPage()"
+    >&lt;</button>
+  </div>
+  <div class="detailed__main" [appColorShadowCard]="card.snippet.publishedAt">
+    <img [src]="card.snippet.thumbnails.maxres.url" alt="title screen" class="detailed__screen" />
+
+    <div class="detailed__info" [appColorBorderCard]="card.snippet.publishedAt">
+      <div class="detailed__main-info">
+        <h2 class="detailed__title">{{ card.snippet.title }}</h2>
+        <span class="detailed__date">{{ card.snippet.publishedAt | date: 'fullDate' }}</span>
+      </div>
+
+      <div class="detailed__description_title">Description:</div>
+
+      <div class="detailed__description">
+        <div class="detailed__description_text">
+          {{ card.snippet.description }}
+        </div>
+      </div>
+
+      <div class="detailed__statistics">
+        <div class="detailed__statistic detailed__view">
+          <img src="./assets/image/card/viewed.svg" alt="detailed view" class="detailed__view__img" />
+          <span class="detailed__menu__text">{{ card.statistics.viewCount }}</span>
+        </div>
+        <div class="detailed__statistic detailed__like">
+          <img src="./assets/image/card/liked.svg" alt="detailed like" class="detailed__like__img" />
+          <span class="detailed__menu__text">{{ card.statistics.likeCount }}</span>
+        </div>
+        <div class="detailed__statistic detailed__dislike">
+          <img src="./assets/image/card/dislike.svg" alt="detailed dislike" class="detailed__dislike__img" />
+          <span class="detailed__menu__text">{{ card.statistics.dislikeCount }}</span>
+        </div>
+        <div class="detailed__statistic detailed__comments">
+          <img src="./assets/image/card/comments.svg" alt="detailed dislike" class="detailed__comments__img" />
+          <span class="detailed__menu__text">{{ card.statistics.commentCount }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

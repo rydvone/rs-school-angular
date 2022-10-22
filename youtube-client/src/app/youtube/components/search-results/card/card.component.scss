@@ -1,0 +1,88 @@
+@import '_colors';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 263px;
+  height: 327px;
+  background: #e5e5e5;
+  padding: 20px 20px 15px 20px;
+  border-radius: 5px;
+}
+
+.card__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2em;
+}
+
+.card__screen {
+  display: block;
+  width: 223px;
+  height: 123px;
+  margin: 0 auto;
+}
+
+.card__statistics {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.card__statistic {
+  display: flex;
+  gap: 3px;
+}
+
+.card__view__img {
+  display: block;
+  width: 20px;
+  height: 13px;
+  margin: 0 auto;
+}
+
+.card__like__img,
+.card__dislike__img {
+  display: block;
+  width: 15px;
+  height: 13px;
+  margin: 0 auto;
+}
+
+.card__comments__img {
+  display: block;
+  width: 13px;
+  height: 13px;
+  margin: 0 auto;
+}
+
+.card__title {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  margin: 0;
+}
+
+.card__more {
+  width: 120px;
+  height: 32px;
+  color: #fff;
+  background: $color-blue;
+  border: 0;
+  border-radius: 5px;
+  box-shadow: 0.1em 0.1em #999;
+
+  &:active {
+    box-shadow: 0.01em 0.01em #666;
+    transform: translate(0.1em, 0.1em);
+  }
+}

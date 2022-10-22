@@ -1,0 +1,15 @@
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4em;
+  padding: 0 0 2em 0;
+}
+
+@media (max-width: 1279.98px) {
+  .wrapper__root-component {
+    max-width: 96vw;
+    margin: 0 auto;
+  }
+}
+

@@ -1,0 +1,144 @@
+@import '_colors';
+
+.detailed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.2;
+  margin: 0 auto;
+  padding: 2vw 1vw;
+}
+
+.detailed__back-button_wrapper {
+  align-self: flex-start;
+}
+
+.detailed__back-button {
+  width: 32px;
+  height: 32px;
+  color: $color-white;
+  font-size: 1.8em;
+  text-shadow: 0 0 0.05em $color-white;
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  border: transparent;
+  border-radius: 4px 0 0 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.detailed__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailed__screen {
+  display: block;
+  width: 100%;
+  max-width: 730px;
+  height: 461px;
+  margin: 0;
+  border-radius: 0 0 0 5px;
+  filter: drop-shadow(5px 10px 20px rgba(51, 51, 51, 0.25));
+}
+
+.detailed__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6em;
+  max-width: 436px;
+  height: 461px;
+  background-color: $color-grey;
+  padding: 2.2em 2.2em 1.5em;
+  border-radius: 0 5px 5px 0;
+}
+
+.detailed__main-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.detailed__title {
+  font-weight: 700;
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.detailed__date {
+  color: $color-grey-text;
+  font-size: 0.6em;
+  text-align: right;
+  display: inline-flex;
+  align-items: flex-end;
+}
+
+.detailed__description {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6em;
+  overflow-y: auto;
+
+}
+
+.detailed__description_title {
+  font-size: 0.9em;
+}
+
+.detailed__description_text {
+  max-height: 40%;
+  color: $color-grey-text;
+  font-size: 0.8em;
+  padding: 0 0 2em;
+}
+
+.detailed__statistics {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  gap: 1em;
+  font-size: 0.6em;
+  margin: auto 0 0;
+}
+
+.detailed__statistic {
+  display: flex;
+  gap: 3px
+}
+
+.detailed__view__img {
+  display: block;
+  width: 20px;
+  height: 13px;
+  margin: 0 auto;
+}
+
+.detailed__like__img,
+.detailed__dislike__img {
+  display: block;
+  width: 15px;
+  height: 13px;
+  margin: 0 auto;
+}
+
+.detailed__comments__img {
+  display: block;
+  width: 13px;
+  height: 13px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1279.98px) {
+  .detailed {
+    max-width: 96vw;
+  }
+}
+
+@media (max-width: 1024.98px) {
+  .detailed {
+    max-width: 92vw;
+  }
+}

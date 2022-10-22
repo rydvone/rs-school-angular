@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1440px;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+@media (max-width: 1279.98px) {
+  :host {
+    max-width: 96vw;
+    margin: 0 auto;
+  }
+}
