@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Subject } from 'rxjs';
 import { HeaderService } from '../../services/header.service';
 
 @Component({
@@ -16,21 +18,41 @@ export class HeaderComponent {
 
   public buttonSettingsColor: string = this.headerService.colorSettings;
 
-  public onSearch() {
-    this.router.navigate(['/main']);
-    this.headerService.search();
+  // https://angular.io/guide/practical-observable-usage#type-ahead-suggestions
+  typeInSearch() {
+    const inputSearch = document.getElementById('header__input-search') as HTMLInputElement;
+
+    const typeText = fromEvent(inputSearch, 'input').pipe(
+      map((e) => (e.target as HTMLInputElement).value),
+      filter((text) => text.length > 3),
+      debounceTime(1000),
+      distinctUntilChanged(),
+    );
+    typeText.subscribe((data) => {
+      console.log('searching: ', data);
+      this.goToMain();
+      this.headerService.search();
+    });
   }
 
-  public showSettings() {
+  protected showSettings() {
     this.headerService.toggleSettings();
     this.buttonSettingsColor = this.headerService.colorSettings;
   }
 
-  public goToLogin() {
-    this.router.navigate(['/login']);
+  protected clickOnSearch() {
+    this.typeInSearch();
   }
 
-  public goToAdminPage() {
+  protected goToAdminPage() {
     this.router.navigate(['/main/card-create']);
+  }
+
+  protected goToMain() {
+    this.router.navigate(['/main']);
+  }
+
+  protected goToLogin() {
+    this.router.navigate(['/login']);
   }
 }

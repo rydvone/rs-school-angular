@@ -44,12 +44,12 @@
   }
 }
 
-.header__search__input {
+.header__input-search {
   width: 396px;
-  height: 24px;
-  box-shadow: 0 0 2vw 0.4vh rgba(255, 255, 230, 0.06);
-  padding: 0.1em 0.5em;
+  line-height: 1.2;
+  padding: 0.3em 0.5em;
   border-radius: 0.2em;
+  box-shadow: 0 0 2vw 0.4vh rgba(255, 255, 230, 0.06);
 }
 
 .header__search__submit {
