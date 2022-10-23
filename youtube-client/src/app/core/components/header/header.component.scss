@@ -74,6 +74,7 @@
 
 .header__auth {
   gap: 2vw;
+  padding: 0 2em;
 }
 
 .header__auth__button {
@@ -93,10 +94,6 @@
   &:hover {
     background-color: $color-blue-active;
   }
-}
-
-.header__auth__name {
-  visibility: hidden;
 }
 
 .header__auth__div {

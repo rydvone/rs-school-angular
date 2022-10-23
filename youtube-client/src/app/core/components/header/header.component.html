@@ -11,7 +11,7 @@
           class="header__input-search"
           id="header__input-search"
           placeholder="search..."
-          name="valueSearch"
+          [formControl]="inputSearch"
           (click)="clickOnSearch()"
         />
       </div>
@@ -20,6 +20,7 @@
         title="settings"
         type="button"
         class="header__settings-button"
+        *ngIf="headerService.isLoading$ | async"
         [ngStyle]="{
           'background-color': buttonSettingsColor,
           'background-image': 'url(./assets/image/header/header__settings.svg)'
@@ -28,7 +29,6 @@
       ></button>
     </div>
     <div class="header__auth">
-      <h3 class="header__auth__name"></h3>
       <button
         class="header__auth__button"
         [ngStyle]="{
@@ -36,6 +36,7 @@
         }"
         (click)="goToLogin()"
       ></button>
+      <span class="header__auth__name"> {{ authService.username$ | async }} </span>
     </div>
   </div>
 </header>
