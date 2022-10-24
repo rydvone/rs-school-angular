@@ -27,8 +27,8 @@ export class HeaderService {
     this.displaySettings.emit(this.stateSettings);
   }
 
-  public search() {
-    this.searchResultsService.getCards();
+  public search(searchRequest: string) {
+    this.searchResultsService.getCards(searchRequest);
     this.showSetting();
   }
 

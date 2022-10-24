@@ -13,7 +13,9 @@ export class SearchResultsService {
 
   public searchResult: Card[] = <Card[]>JSON.parse(JSON.stringify(response.items));
 
-  public getCards() {
+  public getCards(searchRequest: string) {
+    this.cardsStateService.getData(searchRequest);
+
     this.saveCards(this.searchResult);
     this.searchEvent.emit();
   }

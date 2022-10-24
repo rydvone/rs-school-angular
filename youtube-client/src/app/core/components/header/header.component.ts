@@ -35,8 +35,8 @@ export class HeaderComponent implements OnInit {
     );
     this.typeSearch$.subscribe((data) => {
       console.log('searching: ', data);
+      this.headerService.search(data);
       this.goToMain();
-      this.headerService.search();
     });
   }
 
