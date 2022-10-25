@@ -5,5 +5,9 @@
   (sortCountEvent)="onSortCountEvent($event)"
 ></app-settings>
 <div class="page__wrapper">
-  <app-cards *ngIf="visibleCards" [valueFilter]="sendValueFilter" [valueSort]="sendSettingsSort"></app-cards>
+  <app-cards
+    *ngIf="cardsState.cards$ | async"
+    [valueFilter]="sendValueFilter"
+    [valueSort]="sendSettingsSort"
+  ></app-cards>
 </div>

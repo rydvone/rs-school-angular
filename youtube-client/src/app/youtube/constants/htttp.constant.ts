@@ -6,7 +6,7 @@ export const HTTP_COMMON = {
 export const HTTP_REQUEST = {
   search: {
     request: 'search',
-    maxResults: 4,
+    maxResults: 2,
     type: 'video',
     part: 'snippet',
   },

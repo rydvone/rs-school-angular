@@ -19,7 +19,7 @@ export class MainPageComponent implements OnInit {
   constructor(
     private headerService: HeaderService,
     private searchResultService: SearchResultsService,
-    private cardsStateService: CardsStateService,
+    protected cardsState: CardsStateService,
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class MainPageComponent implements OnInit {
   visibleCards = this.displayCards();
 
   displayCards() {
-    return !!this.cardsStateService.state.length;
+    return !!this.cardsState.state.length;
   }
 
   onSortDateEvent(sortDirection: SettingsSortDirection) {

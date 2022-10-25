@@ -5,9 +5,9 @@ import { CardsStateService } from './cards-state.service';
   providedIn: 'root',
 })
 export class CardService {
-  constructor(private cardsStateService: CardsStateService) {}
+  constructor(private cardsState: CardsStateService) {}
 
-  private cards = this.cardsStateService.state;
+  private cards = this.cardsState.state;
 
   getCardById(id: string) {
     const card = this.cards.find((item) => item.id === id);

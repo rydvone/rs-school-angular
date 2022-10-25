@@ -16,9 +16,9 @@ export class CardsStateService {
   }
 
   public getData(searchRequest: string) {
-    this.cardsHttp.getCards(searchRequest).subscribe((cards) => {
-      console.log(cards);
-      this.cards$$.next(cards);
+    this.cardsHttp.getCard(searchRequest).subscribe(({ items }) => {
+      this.state = items.slice();
+      this.cards$$.next(items);
     });
   }
 

@@ -9,12 +9,12 @@ import { SettingsButtonColor } from '../constant/header.constant';
 export class HeaderService {
   @Output() displaySettings = new EventEmitter();
 
-  public isLoading$: Observable<boolean>;
+  public isLoad$: Observable<boolean>;
 
-  private isLoading$$ = new BehaviorSubject(false);
+  private isLoad$$ = new BehaviorSubject(false);
 
   constructor(private searchResultsService: SearchResultsService) {
-    this.isLoading$ = this.isLoading$$.asObservable();
+    this.isLoad$ = this.isLoad$$.asObservable();
   }
 
   public stateSettings = false;
@@ -33,10 +33,10 @@ export class HeaderService {
   }
 
   private showSetting() {
-    this.isLoading$$.next(true);
+    this.isLoad$$.next(true);
   }
 
   private hideSetting() {
-    this.isLoading$$.next(false);
+    this.isLoad$$.next(false);
   }
 }

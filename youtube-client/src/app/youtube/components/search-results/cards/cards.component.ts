@@ -13,7 +13,5 @@ export class CardsComponent {
 
   @Input() valueFilter = '';
 
-  constructor(private cardsStateService: CardsStateService) {}
-
-  cards: Card[] = this.cardsStateService.state;
+  constructor(protected cardsState: CardsStateService) {}
 }
