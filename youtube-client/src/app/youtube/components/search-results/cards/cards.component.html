@@ -1,10 +1,6 @@
 <div class="cards">
   <app-card
-    *ngFor="
-      let el of (cardsState.cards$ | async)!
-        | sort: valueSort.sortType:valueSort.sortDirection
-        | filterByWord: valueFilter
-    "
+    *ngFor="let el of cards | sort: valueSort.sortType:valueSort.sortDirection | filterByWord: valueFilter"
     [card]="el"
   ></app-card>
 </div>

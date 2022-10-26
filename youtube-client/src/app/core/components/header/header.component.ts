@@ -25,16 +25,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.isUsername();
-  }
-
-  typeInSearch() {
     this.typeSearch$ = this.inputSearch.valueChanges.pipe(
       filter((text) => text.length > 3),
       debounceTime(1000),
       distinctUntilChanged(),
     );
     this.typeSearch$.subscribe((data) => {
-      console.log('searching: ', data);
       this.headerService.search(data);
       this.goToMain();
     });
@@ -43,10 +39,6 @@ export class HeaderComponent implements OnInit {
   protected showSettings() {
     this.headerService.toggleSettings();
     this.buttonSettingsColor = this.headerService.colorSettings;
-  }
-
-  protected clickOnSearch() {
-    this.typeInSearch();
   }
 
   protected goToAdminPage() {

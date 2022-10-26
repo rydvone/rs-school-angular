@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Card } from '../../models/card.model';
-import { CardService } from '../../services/card.service';
+import { CardsStateService } from '../../services/cards-state.service';
 
 @Component({
   selector: 'app-detailed-page',
@@ -9,17 +9,35 @@ import { CardService } from '../../services/card.service';
   styleUrls: ['./detailed-page.component.scss'],
 })
 export class DetailedPageComponent implements OnInit {
-  constructor(private router: Router, private idRoute: ActivatedRoute, private cardService: CardService) {}
+  constructor(private router: Router, private idRoute: ActivatedRoute, private cardsState: CardsStateService) {}
 
-  public card!: Card;
+  protected card!: Card;
 
-  public goToMainPage() {
+  private cards: Card[] = [];
+
+  ngOnInit(): void {
+    this.cardsState.cards$$.subscribe((items) => {
+      this.cards = items.slice();
+    });
+
+    this.idRoute.params.subscribe((params: Params) => {
+      this.card = this.getCardById(params['id']) as Card;
+    });
+  }
+
+  private getCardById(idCard: string) {
+    const card = this.cards.find(({ id }) => id === idCard);
+    if (!card) {
+      this.goToNotFoundPage();
+    }
+    return card;
+  }
+
+  protected goToMainPage() {
     this.router.navigate(['/main']);
   }
 
-  ngOnInit(): void {
-    this.idRoute.params.subscribe((params: Params) => {
-      this.card = this.cardService.getCardById(params['id']) as Card;
-    });
+  protected goToNotFoundPage() {
+    this.router.navigate(['/404']);
   }
 }

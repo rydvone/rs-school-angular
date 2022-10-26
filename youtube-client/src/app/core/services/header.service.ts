@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { SearchResultsService } from 'src/app/youtube/services/search-results.service';
+import { CardsStateService } from 'src/app/youtube/services/cards-state.service';
 import { SettingsButtonColor } from '../constant/header.constant';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class HeaderService {
 
   private isLoad$$ = new BehaviorSubject(false);
 
-  constructor(private searchResultsService: SearchResultsService) {
+  constructor(private cardsStateService: CardsStateService) {
     this.isLoad$ = this.isLoad$$.asObservable();
   }
 
@@ -28,7 +28,7 @@ export class HeaderService {
   }
 
   public search(searchRequest: string) {
-    this.searchResultsService.getCards(searchRequest);
+    this.cardsStateService.getData(searchRequest);
     this.showSetting();
   }
 
