@@ -55,13 +55,13 @@
     <div class="login__button-wrapper">
       <button
         class="login__button"
-        *ngIf="(authService.isLogin$ | async) === false"
+        *ngIf="(authService.isLogin() | async) === false"
         type="submit"
         [disabled]="formLogin.invalid"
       >
         Login
       </button>
-      <button class="login__button" *ngIf="authService.isLogin$ | async" (click)="onLogout()" type="button">
+      <button class="login__button" *ngIf="authService.isLogin() | async" (click)="onLogout()" type="button">
         Logout
       </button>
     </div>

@@ -1,7 +1,7 @@
 <header class="header">
   <div class="header__start-block">
     <div class="header__main">
-      <a (click)="goToAdminPage()">
+      <a [routerLink]="['/main/card-create']">
         <img src="./assets/image/header/header__logo.svg" alt="App Logo" class="header__logo" />
       </a>
       <div class="header__search">
@@ -28,14 +28,16 @@
       ></button>
     </div>
     <div class="header__auth">
-      <button
+      <a
         class="header__auth__button"
         [ngStyle]="{
           background: 'url(./assets/image/header/header__auth__img.svg)'
         }"
-        (click)="goToLogin()"
-      ></button>
-      <span class="header__auth__name"> {{ authService.username$ | async }} </span>
+        [routerLink]="['/login']"
+      >
+      </a>
+
+      <span class="header__auth__name"> {{ authService.displayUsername() | async }} </span>
     </div>
   </div>
 </header>

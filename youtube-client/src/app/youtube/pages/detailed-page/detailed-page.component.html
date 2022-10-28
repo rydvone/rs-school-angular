@@ -1,12 +1,16 @@
 <div class="detailed">
   <div class="detailed__back-button_wrapper">
-    <button
-      class="detailed__back-button"
-      [appColorBackground]="card.snippet.publishedAt"
-      [appColorShadowCard]="card.snippet.publishedAt"
-      (click)="goToMainPage()"
-    >&lt;</button>
+    <a [routerLink]="['/main']">
+      <button
+        class="detailed__back-button"
+        [appColorBackground]="card.snippet.publishedAt"
+        [appColorShadowCard]="card.snippet.publishedAt"
+      >
+        &lt;
+      </button>
+    </a>
   </div>
+
   <div class="detailed__main" [appColorShadowCard]="card.snippet.publishedAt">
     <img [src]="card.snippet.thumbnails.medium.url" alt="title screen" class="detailed__screen" />
 

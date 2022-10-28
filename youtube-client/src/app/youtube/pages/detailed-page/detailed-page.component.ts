@@ -16,7 +16,7 @@ export class DetailedPageComponent implements OnInit {
   private cards: Card[] = [];
 
   ngOnInit(): void {
-    this.cardsState.cards$$.subscribe((items) => {
+    this.cardsState.getCards().subscribe((items) => {
       this.cards = items.slice();
     });
 
@@ -33,11 +33,7 @@ export class DetailedPageComponent implements OnInit {
     return card;
   }
 
-  protected goToMainPage() {
-    this.router.navigate(['/main']);
-  }
-
-  protected goToNotFoundPage() {
+  private goToNotFoundPage() {
     this.router.navigate(['/404']);
   }
 }

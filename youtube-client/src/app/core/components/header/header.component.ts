@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   constructor(protected headerService: HeaderService, private router: Router, protected authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authService.isUsername();
+    this.authService.getUsername();
     this.typeSearch$ = this.inputSearch.valueChanges.pipe(
       filter((text) => text.length > 3),
       debounceTime(1000),
@@ -41,15 +41,7 @@ export class HeaderComponent implements OnInit {
     this.buttonSettingsColor = this.headerService.colorSettings;
   }
 
-  protected goToAdminPage() {
-    this.router.navigate(['/main/card-create']);
-  }
-
-  protected goToMain() {
+  private goToMain() {
     this.router.navigate(['/main']);
-  }
-
-  protected goToLogin() {
-    this.router.navigate(['/login']);
   }
 }

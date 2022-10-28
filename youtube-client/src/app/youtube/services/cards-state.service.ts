@@ -7,23 +7,24 @@ import { HttpCardsService } from './http-cards.service';
   providedIn: 'root',
 })
 export class CardsStateService {
-  public isLoadSearch$: Observable<boolean>;
+  private isLoadSearch$ = new BehaviorSubject(false);
 
-  private isLoadSearch$$ = new BehaviorSubject(false);
+  private cards$ = new BehaviorSubject<Card[]>([]);
 
-  public cards$: Observable<Card[]>;
-
-  public cards$$ = new BehaviorSubject<Card[]>([]);
-
-  constructor(private cardsHttp: HttpCardsService) {
-    this.isLoadSearch$ = this.isLoadSearch$$.asObservable();
-    this.cards$ = this.cards$$.asObservable();
-  }
+  constructor(private cardsHttp: HttpCardsService) {}
 
   public getData(searchRequest: string) {
     this.cardsHttp.getCard(searchRequest).subscribe(({ items }) => {
-      this.isLoadSearch$$.next(true);
-      this.cards$$.next(items);
+      this.isLoadSearch$.next(true);
+      this.cards$.next(items);
     });
+  }
+
+  public getCards(): Observable<Card[]> {
+    return this.cards$.asObservable();
+  }
+
+  public isLoadSearch(): Observable<boolean> {
+    return this.isLoadSearch$.asObservable();
   }
 }

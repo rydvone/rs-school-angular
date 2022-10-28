@@ -6,7 +6,7 @@
 ></app-settings>
 <div class="page__wrapper">
   <app-cards
-    *ngIf="cardsState.isLoadSearch$ | async"
+    *ngIf="cardsState.isLoadSearch() | async"
     [valueFilter]="sendValueFilter"
     [valueSort]="sendSettingsSort"
   ></app-cards>

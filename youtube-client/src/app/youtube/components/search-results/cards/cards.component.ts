@@ -18,7 +18,7 @@ export class CardsComponent implements OnInit {
   cards: Card[] = [];
 
   ngOnInit(): void {
-    this.cardsState.cards$.subscribe((items) => {
+    this.cardsState.getCards().subscribe((items) => {
       this.cards = items.slice();
     });
   }

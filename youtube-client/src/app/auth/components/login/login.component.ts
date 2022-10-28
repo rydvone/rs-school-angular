@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   protected message = LOGIN_VALIDATION_TEXT;
 
   ngOnInit() {
-    this.authService.isLocalStorageLogin();
+    this.authService.checkLocalStorage();
 
     this.formLogin = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),

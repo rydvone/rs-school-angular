@@ -82,8 +82,18 @@
   height: 24px;
   background-repeat: no-repeat;
   background-size: 30px 30px;
-  border: transparent;
+  border: none;
   border-radius: 4px;
+
+  box-shadow: 0.1em 0.1em #999;
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    box-shadow: 0.01em 0.01em #666;
+    transform: translate(0.1em, 0.1em);
+  }
 }
 
 .button-logout {

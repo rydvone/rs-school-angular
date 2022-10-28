@@ -7,65 +7,54 @@ import { LOGIN_VARIABLE_NAMES } from '../constants/login.constant';
   providedIn: 'root',
 })
 export class AuthService {
-  public isLogin$: Observable<boolean>;
+  private isLogin$ = new BehaviorSubject(false);
 
-  public username$: Observable<string>;
+  private displayUsername$ = new BehaviorSubject('');
 
-  private isLogin$$ = new BehaviorSubject(false);
-
-  private username$$ = new BehaviorSubject('');
-
-  constructor(private router: Router) {
-    this.isLogin$ = this.isLogin$$.asObservable();
-    this.username$ = this.username$$.asObservable();
-  }
+  constructor(private router: Router) {}
 
   public login(user: string, password: string) {
-    this.show();
-    this.setAuth(user, password);
+    this.isLogin$.next(true);
+    this.displayUsername$.next(user);
+    this.saveToken(user, password);
+    this.router.navigate(['/main']);
   }
 
   public logout() {
-    this.setUsername('');
-    this.hide();
+    this.isLogin$.next(false);
+    this.displayUsername$.next('');
     localStorage.removeItem(LOGIN_VARIABLE_NAMES.token);
     this.router.navigate(['/login']);
   }
 
-  public isLocalStorageLogin() {
+  private saveToken(user: string, password: string) {
+    const token = `${user}#${password}`;
+    localStorage.setItem(LOGIN_VARIABLE_NAMES.token, token);
+  }
+
+  public checkLocalStorage() {
     const token = !!localStorage.getItem(LOGIN_VARIABLE_NAMES.token);
     if (token) {
-      this.show();
+      this.isLogin$.next(true);
     } else {
-      this.hide();
+      this.isLogin$.next(false);
     }
     return token;
   }
 
-  public isUsername() {
-    if (this.isLocalStorageLogin()) {
-      const token = localStorage.getItem('token');
+  public getUsername() {
+    if (this.checkLocalStorage()) {
+      const token = localStorage.getItem(LOGIN_VARIABLE_NAMES.token);
       const user = token?.split('#') as [string];
-      this.setUsername(user[0]);
+      this.displayUsername$.next(user[0]);
     }
   }
 
-  private setAuth(user: string, password: string) {
-    this.setUsername(user);
-    const token = `${user}#${password}`;
-    localStorage.setItem(LOGIN_VARIABLE_NAMES.token, token);
-    this.router.navigate(['/main']);
+  public isLogin(): Observable<boolean> {
+    return this.isLogin$.asObservable();
   }
 
-  private show() {
-    this.isLogin$$.next(true);
-  }
-
-  private hide() {
-    this.isLogin$$.next(false);
-  }
-
-  private setUsername(user: string) {
-    this.username$$.next(user);
+  public displayUsername(): Observable<string> {
+    return this.displayUsername$.asObservable();
   }
 }

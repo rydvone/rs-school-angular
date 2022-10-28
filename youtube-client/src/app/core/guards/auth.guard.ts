@@ -9,7 +9,7 @@ export class AuthGuard implements CanActivate {
   constructor(private loginService: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    const isLogin = this.loginService.isLocalStorageLogin();
+    const isLogin = this.loginService.checkLocalStorage();
     if (isLogin) {
       return true;
     }
