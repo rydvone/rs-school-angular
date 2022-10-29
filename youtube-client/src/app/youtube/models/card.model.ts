@@ -17,15 +17,12 @@ interface Snippet {
   categoryId: string;
   liveBroadcastContent: string;
   localized: Localized;
-  defaultAudioLanguage: string;
 }
 
 interface Thumbnails {
   default: Thumbnail;
   medium: Thumbnail;
   high: Thumbnail;
-  standard: Thumbnail;
-  maxres: Thumbnail;
 }
 
 interface Thumbnail {
@@ -42,7 +39,6 @@ interface Localized {
 interface Statistics {
   viewCount: string;
   likeCount: string;
-  dislikeCount: string;
   favoriteCount: string;
   commentCount: string;
 }

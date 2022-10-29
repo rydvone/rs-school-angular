@@ -1,27 +1,25 @@
 <header class="header">
   <div class="header__start-block">
     <div class="header__main">
-      <a (click)="goToAdminPage()">
+      <a [routerLink]="['/main/card-create']">
         <img src="./assets/image/header/header__logo.svg" alt="App Logo" class="header__logo" />
       </a>
       <div class="header__search">
-        <label for="header__search__input"></label>
+        <label for="header__input-search"></label>
         <input
           type="search"
-          class="header__search__input"
-          id="header__search__input"
+          class="header__input-search"
+          id="header__input-search"
           placeholder="search..."
-          autocomplete="search"
-          (keydown.enter)="onSearch()"
-          name="valueSearch"
-          [(ngModel)]="valueSearch"
+          [formControl]="inputSearch"
         />
-        <button class="header__search__submit" (click)="onSearch()">search</button>
       </div>
+
       <button
         title="settings"
         type="button"
         class="header__settings-button"
+        *ngIf="headerService.isLoad$ | async"
         [ngStyle]="{
           'background-color': buttonSettingsColor,
           'background-image': 'url(./assets/image/header/header__settings.svg)'
@@ -30,14 +28,16 @@
       ></button>
     </div>
     <div class="header__auth">
-      <h3 class="header__auth__name"></h3>
-      <button
+      <a
         class="header__auth__button"
         [ngStyle]="{
           background: 'url(./assets/image/header/header__auth__img.svg)'
         }"
-        (click)="goToLogin()"
-      ></button>
+        [routerLink]="['/login']"
+      >
+      </a>
+
+      <span class="header__auth__name"> {{ authService.displayUsername() | async }} </span>
     </div>
   </div>
 </header>

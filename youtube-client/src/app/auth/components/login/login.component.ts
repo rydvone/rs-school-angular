@@ -12,13 +12,15 @@ import { specialCharacterValidator } from '../../validators/special-character.va
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(protected authService: AuthService) {}
 
   public formLogin!: FormGroup;
 
   protected message = LOGIN_VALIDATION_TEXT;
 
   ngOnInit() {
+    this.authService.checkLocalStorage();
+
     this.formLogin = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [

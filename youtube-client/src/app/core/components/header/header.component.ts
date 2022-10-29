@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime, distinctUntilChanged, filter, Observable } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
 import { HeaderService } from '../../services/header.service';
 
 @Component({
@@ -7,30 +10,38 @@ import { HeaderService } from '../../services/header.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
-  constructor(private headerService: HeaderService, private router: Router) {}
-
+export class HeaderComponent implements OnInit {
   public valueSearch = '';
 
   public settingsState = this.headerService.stateSettings;
 
   public buttonSettingsColor: string = this.headerService.colorSettings;
 
-  public onSearch() {
-    this.router.navigate(['/main']);
-    this.headerService.search();
+  protected inputSearch = new FormControl();
+
+  protected typeSearch$!: Observable<string>;
+
+  constructor(protected headerService: HeaderService, private router: Router, protected authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.authService.getUsername();
+    this.typeSearch$ = this.inputSearch.valueChanges.pipe(
+      filter((text) => text.length > 3),
+      debounceTime(1000),
+      distinctUntilChanged(),
+    );
+    this.typeSearch$.subscribe((data) => {
+      this.headerService.search(data);
+      this.goToMain();
+    });
   }
 
-  public showSettings() {
+  protected showSettings() {
     this.headerService.toggleSettings();
     this.buttonSettingsColor = this.headerService.colorSettings;
   }
 
-  public goToLogin() {
-    this.router.navigate(['/login']);
-  }
-
-  public goToAdminPage() {
-    this.router.navigate(['/main/card-create']);
+  private goToMain() {
+    this.router.navigate(['/main']);
   }
 }
