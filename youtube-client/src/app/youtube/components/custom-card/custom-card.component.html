@@ -1,0 +1,9 @@
+<div class="custom-card" [appColorBorderCard]="customCard.creationDate">
+  <div class="custom-card__description">
+    <img [src]="customCard.linkImage" alt="title screen" class="custom-card__screen" />
+
+    <h2 class="custom-card__title">{{ customCard.title }}</h2>
+  </div>
+
+  <button class="custom-card__more" (click)="goToDetailedPage()">more...</button>
+</div>

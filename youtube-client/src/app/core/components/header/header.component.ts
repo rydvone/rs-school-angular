@@ -41,7 +41,7 @@ export class HeaderComponent implements OnInit {
     this.buttonSettingsColor = this.headerService.colorSettings;
   }
 
-  private goToMain() {
+  protected goToMain() {
     this.router.navigate(['/main']);
   }
 }

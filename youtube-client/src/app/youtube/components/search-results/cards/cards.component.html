@@ -4,3 +4,9 @@
     [card]="el"
   ></app-card>
 </div>
+<div class="cards">
+  <app-custom-card
+    *ngFor="let el of customCards"
+    [customCard]="el"
+  ></app-custom-card>
+</div>

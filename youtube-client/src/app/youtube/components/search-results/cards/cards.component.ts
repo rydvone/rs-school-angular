@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SendSettingsSort } from 'src/app/app.component';
 import { Card } from 'src/app/youtube/models/card.model';
+import { CustomCard } from 'src/app/youtube/models/custom-card.model';
 import { CardsStateService } from 'src/app/youtube/services/cards-state.service';
 
 @Component({
@@ -16,6 +17,8 @@ export class CardsComponent implements OnInit {
   constructor(private cardsState: CardsStateService) {}
 
   cards: Card[] = [];
+
+  customCards: CustomCard[] = [];
 
   ngOnInit(): void {
     this.cardsState.getCards().subscribe((items) => {
