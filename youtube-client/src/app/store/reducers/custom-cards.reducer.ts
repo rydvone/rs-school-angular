@@ -1,4 +1,3 @@
-// import { state } from '@angular/animations';
 import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
 import * as CustomCardAction from '../actions/custom-cards.action';
 import { CustomCardsState } from '../state.models';
@@ -14,7 +13,3 @@ export const customCardsReducer = createReducer(
     customCards: [...state.customCards, newCard],
   })),
 );
-
-const selectFeature = createFeatureSelector<CustomCardsState>('customCards');
-
-export const selectCustomCards = createSelector(selectFeature, (state: CustomCardsState) => state.customCards);

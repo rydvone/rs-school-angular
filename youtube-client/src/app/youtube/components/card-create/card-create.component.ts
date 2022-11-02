@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   CARD_CREATE_VALIDATION_TEXT,
@@ -8,6 +9,7 @@ import {
 } from '../../constants/card-create.constant';
 import { CustomCard } from '../../models/custom-card.model';
 import { CardsStateService } from '../../services/cards-state.service';
+import * as CustomCardAction from '../../../store/actions/custom-cards.action';
 // import { correctDateValidator } from '../../validators/correct-date.validator';
 
 @Component({
@@ -16,7 +18,7 @@ import { CardsStateService } from '../../services/cards-state.service';
   styleUrls: ['./card-create.component.scss'],
 })
 export class CardCreateComponent implements OnInit {
-  constructor(private cardsStateService: CardsStateService) {}
+  constructor(private cardsStateService: CardsStateService, private store: Store) {}
 
   public formCard!: FormGroup;
 
@@ -49,6 +51,17 @@ export class CardCreateComponent implements OnInit {
 
   onSubmit() {
     if (this.formCard.valid) {
+      const newCard: CustomCard = {
+        title: this.formCard.value.title,
+        description: this.formCard.value.description,
+        linkImage: this.formCard.value.linkImage,
+        linkVideo: this.formCard.value.linkVideo,
+        creationDate: '',
+        id: 0,
+      };
+      newCard.creationDate = new Date().toString();
+      newCard.id = new Date(this.newCustomCard.creationDate).getTime();
+
       this.newCustomCard.title = this.formCard.value.title;
       this.newCustomCard.description = this.formCard.value.description;
       this.newCustomCard.linkImage = this.formCard.value.linkImage;
@@ -59,6 +72,8 @@ export class CardCreateComponent implements OnInit {
 
       // eslint-disable-next-line no-console
       console.log(this.newCustomCard);
+
+      this.store.dispatch(CustomCardAction.addCustomCards({ newCard }));
 
       this.formCard.reset();
     }

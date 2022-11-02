@@ -6,7 +6,7 @@
 </div>
 <div class="cards">
   <app-custom-card
-    *ngFor="let el of customCards"
+    *ngFor="let el of customCards | async"
     [customCard]="el"
   ></app-custom-card>
 </div>
