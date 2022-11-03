@@ -1,4 +1,4 @@
-import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import * as CustomCardAction from '../actions/custom-cards.action';
 import { CustomCardsState } from '../state.models';
 

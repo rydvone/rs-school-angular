@@ -13,6 +13,7 @@ export class CardComponent {
   constructor(private router: Router) {}
 
   goToDetailedPage() {
+    console.log('this.card.id', this.card.id);
     this.router.navigate(['/main/detailed', this.card.id]);
   }
 }

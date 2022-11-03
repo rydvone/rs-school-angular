@@ -7,6 +7,7 @@ export interface CustomCardsState {
 
 export interface YoutubeCardsState {
   youtubeCards: Card[];
+  isLoad: boolean;
 }
 
 export interface Store {

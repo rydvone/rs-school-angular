@@ -9,13 +9,13 @@ import { SettingsButtonColor } from '../constant/header.constant';
 export class HeaderService {
   @Output() displaySettings = new EventEmitter();
 
-  public isLoad$: Observable<boolean>;
+  // public isLoad$: Observable<boolean>;
 
-  private isLoad$$ = new BehaviorSubject(false);
+  // private isLoad$$ = new BehaviorSubject(false);
 
-  constructor(private cardsStateService: CardsStateService) {
-    this.isLoad$ = this.isLoad$$.asObservable();
-  }
+  // constructor(private cardsStateService: CardsStateService) {
+  //   this.isLoad$ = this.isLoad$$.asObservable();
+  // }
 
   public stateSettings = false;
 
@@ -27,16 +27,16 @@ export class HeaderService {
     this.displaySettings.emit(this.stateSettings);
   }
 
-  public search(searchRequest: string) {
-    this.cardsStateService.getData(searchRequest);
-    this.showSetting();
-  }
+  // public search(searchRequest: string) {
+  //   this.cardsStateService.getData(searchRequest);
+  //   this.showSetting();
+  // }
 
-  private showSetting() {
-    this.isLoad$$.next(true);
-  }
+  // private showSetting() {
+  //   this.isLoad$$.next(true);
+  // }
 
-  private hideSetting() {
-    this.isLoad$$.next(false);
-  }
+  // private hideSetting() {
+  //   this.isLoad$$.next(false);
+  // }
 }

@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ShortenerInterceptor } from './youtube/interceptors/shortener.interceptor';
 import { customCardsReducer } from './store/reducers/custom-cards.reducer';
+import { youtubeCardsReducer } from './store/reducers/youtube-cards.reducer';
+import { YoutubeCardsEffects } from './store/effects/youtube-cards.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,10 +26,11 @@ import { customCardsReducer } from './store/reducers/custom-cards.reducer';
     StoreModule.forRoot(
       {
         customCards: customCardsReducer,
+        youtubeCards: youtubeCardsReducer,
       },
       {},
     ),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([YoutubeCardsEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
   ],

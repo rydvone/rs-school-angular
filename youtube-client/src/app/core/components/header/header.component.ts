@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { debounceTime, distinctUntilChanged, filter, Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { HeaderService } from '../../services/header.service';
+import * as YoutubeCardsAction from '../../../store/actions/youtube-cards.action';
+import { selectIsLoadYoutubeCards } from 'src/app/store/selectors/youtube-cards.selector';
+import { YoutubeCardsState } from 'src/app/store/state.models';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +25,16 @@ export class HeaderComponent implements OnInit {
 
   protected typeSearch$!: Observable<string>;
 
-  constructor(protected headerService: HeaderService, private router: Router, protected authService: AuthService) {}
+  protected displaySettings$: Observable<boolean>;
+
+  constructor(
+    protected headerService: HeaderService,
+    private router: Router,
+    protected authService: AuthService,
+    private store: Store,
+  ) {
+    this.displaySettings$ = this.store.select(selectIsLoadYoutubeCards);
+  }
 
   ngOnInit(): void {
     this.authService.getUsername();
@@ -30,8 +43,8 @@ export class HeaderComponent implements OnInit {
       debounceTime(1000),
       distinctUntilChanged(),
     );
-    this.typeSearch$.subscribe((data) => {
-      this.headerService.search(data);
+    this.typeSearch$.subscribe((searchValue) => {
+      this.store.dispatch(YoutubeCardsAction.loadYoutubeCards({ searchValue }));
       this.goToMain();
     });
   }
