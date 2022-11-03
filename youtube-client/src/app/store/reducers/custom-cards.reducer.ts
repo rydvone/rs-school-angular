@@ -8,8 +8,11 @@ const initialCustomCards: CustomCardsState = {
 
 export const customCardsReducer = createReducer(
   initialCustomCards,
-  on(CustomCardAction.addCustomCards, (state, { newCard }) => ({
-    ...state,
-    customCards: [...state.customCards, newCard],
-  })),
+  on(
+    CustomCardAction.addCustomCards,
+    (state, { newCard }): CustomCardsState => ({
+      ...state,
+      customCards: [...state.customCards, newCard],
+    }),
+  ),
 );

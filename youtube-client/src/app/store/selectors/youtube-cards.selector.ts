@@ -8,15 +8,4 @@ export const selectAllYoutubeCards = createSelector(selectFeature, (state: Youtu
 export const selectIsLoadYoutubeCards = createSelector(selectFeature, (state: YoutubeCardsState) => state.isLoad);
 
 export const selectYoutubeCardById = (idCard: string) =>
-  createSelector(selectFeature, (state: YoutubeCardsState) => {
-    const card = state.youtubeCards.find(({ id }) => id === idCard);
-    console.log('card: ', card);
-    return undefined;
-  });
-
-// export const selectYoutubeCardById = (idCard: string) =>
-//   createSelector(selectFeature, (state: YoutubeCardsState) => {
-//     const card = state.youtubeCards.find(({ id }) => id === idCard);
-//     console.log('card: ', card);
-//     return undefined;
-//   });
+  createSelector(selectFeature, (state: YoutubeCardsState) => state.youtubeCards.find(({ id }) => id === idCard));

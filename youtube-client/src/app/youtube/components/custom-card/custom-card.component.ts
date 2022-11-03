@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Card } from '../../models/card.model';
 import { CustomCard } from '../../models/custom-card.model';
 
 @Component({

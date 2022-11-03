@@ -9,20 +9,17 @@ const initialYoutubeCards: YoutubeCardsState = {
 
 export const youtubeCardsReducer = createReducer(
   initialYoutubeCards,
-  on(YoutubeCardAction.successLoadYoutubeCards, (state, { cards }) => {
-    console.log('success cards', state, cards);
+  on(YoutubeCardAction.successLoadYoutubeCards, (state, { cards }): YoutubeCardsState => {
     return {
       ...state,
       youtubeCards: [...cards],
       isLoad: true,
     };
   }),
-  on(YoutubeCardAction.loadYoutubeCards, (state) => {
-    console.log('loadYoutubeCards Reducer', state);
+  on(YoutubeCardAction.loadYoutubeCards, (state): YoutubeCardsState => {
     return { ...state, isLoad: false };
   }),
-  on(YoutubeCardAction.failLoadYoutubeCards, (state) => {
-    console.log('fail Reducer', state);
+  on(YoutubeCardAction.failLoadYoutubeCards, (state): YoutubeCardsState => {
     return { ...state, isLoad: false };
   }),
 );

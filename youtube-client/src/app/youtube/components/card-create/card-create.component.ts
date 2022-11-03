@@ -8,9 +8,7 @@ import {
   MIN_LENGTH_TITLE_CARD_CREATE,
 } from '../../constants/card-create.constant';
 import { CustomCard } from '../../models/custom-card.model';
-import { CardsStateService } from '../../services/cards-state.service';
 import * as CustomCardAction from '../../../store/actions/custom-cards.action';
-// import { correctDateValidator } from '../../validators/correct-date.validator';
 
 @Component({
   selector: 'app-card-create',
@@ -18,7 +16,7 @@ import * as CustomCardAction from '../../../store/actions/custom-cards.action';
   styleUrls: ['./card-create.component.scss'],
 })
 export class CardCreateComponent implements OnInit {
-  constructor(private cardsStateService: CardsStateService, private store: Store) {}
+  constructor(private store: Store) {}
 
   public formCard!: FormGroup;
 
@@ -45,7 +43,6 @@ export class CardCreateComponent implements OnInit {
       description: new FormControl('', [Validators.maxLength(MAX_LENGTH_DESCRIPTION_CARD_CREATE)]),
       linkImage: new FormControl('', [Validators.required, Validators.pattern(urlRegex)]),
       linkVideo: new FormControl('', [Validators.required, Validators.pattern(urlRegex)]),
-      // dateCreation: new FormControl('', [Validators.required, correctDateValidator]),
     });
   }
 
@@ -61,17 +58,6 @@ export class CardCreateComponent implements OnInit {
       };
       newCard.creationDate = new Date().toString();
       newCard.id = new Date(this.newCustomCard.creationDate).getTime();
-
-      this.newCustomCard.title = this.formCard.value.title;
-      this.newCustomCard.description = this.formCard.value.description;
-      this.newCustomCard.linkImage = this.formCard.value.linkImage;
-      this.newCustomCard.linkVideo = this.formCard.value.linkVideo;
-
-      this.newCustomCard.creationDate = new Date().toString();
-      this.newCustomCard.id = new Date(this.newCustomCard.creationDate).getTime();
-
-      // eslint-disable-next-line no-console
-      console.log(this.newCustomCard);
 
       this.store.dispatch(CustomCardAction.addCustomCards({ newCard }));
 

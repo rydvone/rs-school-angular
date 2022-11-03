@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { debounceTime, distinctUntilChanged, filter, Observable } from 'rxjs';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { SettingsService } from 'src/app/youtube/services/settings.service';
+import { selectIsLoadYoutubeCards } from 'src/app/store/selectors/youtube-cards.selector';
 import { HeaderService } from '../../services/header.service';
 import * as YoutubeCardsAction from '../../../store/actions/youtube-cards.action';
-import { selectIsLoadYoutubeCards } from 'src/app/store/selectors/youtube-cards.selector';
-import { YoutubeCardsState } from 'src/app/store/state.models';
 
 @Component({
   selector: 'app-header',
@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     protected headerService: HeaderService,
+    protected settingsService: SettingsService,
     private router: Router,
     protected authService: AuthService,
     private store: Store,
