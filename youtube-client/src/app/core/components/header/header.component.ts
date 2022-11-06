@@ -39,15 +39,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.getUsername();
-    this.typeSearch$ = this.inputSearch.valueChanges.pipe(
-      filter((text) => text.length > 3),
-      debounceTime(1000),
-      distinctUntilChanged(),
-    );
-    this.typeSearch$.subscribe((searchValue) => {
-      this.store.dispatch(YoutubeCardsAction.loadYoutubeCards({ searchValue }));
-      this.goToMain();
-    });
+    this.inputSearch.valueChanges
+      .pipe(
+        filter((text) => text.length > 3),
+        debounceTime(1500),
+        distinctUntilChanged(),
+      )
+      .subscribe((searchValue) => {
+        this.store.dispatch(YoutubeCardsAction.loadYoutubeCards({ searchValue }));
+        this.goToMain();
+      });
   }
 
   protected showSettings() {
