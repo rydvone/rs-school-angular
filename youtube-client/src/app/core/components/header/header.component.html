@@ -12,6 +12,7 @@
           id="header__input-search"
           placeholder="search..."
           [formControl]="inputSearch"
+          (click)="goToMain()"
         />
       </div>
 
@@ -19,7 +20,7 @@
         title="settings"
         type="button"
         class="header__settings-button"
-        *ngIf="headerService.isLoad$ | async"
+        *ngIf="(this.settingsService.isMainPage() | async) && (this.authService.isLogin() | async)"
         [ngStyle]="{
           'background-color': buttonSettingsColor,
           'background-image': 'url(./assets/image/header/header__settings.svg)'

@@ -15,6 +15,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
 import { DateColorService } from './services/date-color.service';
 import { CardCreateComponent } from './components/card-create/card-create.component';
 import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { CustomCardComponent } from './components/custom-card/custom-card.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AdminPageComponent } from './pages/admin-page/admin-page.component';
     ColorBackgroundDirective,
     CardCreateComponent,
     AdminPageComponent,
+    CustomCardComponent,
   ],
   imports: [CommonModule, FormsModule, ReactiveFormsModule, YoutubeRoutingModule],
   exports: [SettingsComponent, CardsComponent, CardComponent, DetailedPageComponent, MainPageComponent],

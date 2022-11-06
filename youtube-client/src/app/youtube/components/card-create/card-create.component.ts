@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   CARD_CREATE_VALIDATION_TEXT,
@@ -6,8 +7,8 @@ import {
   MAX_LENGTH_TITLE_CARD_CREATE,
   MIN_LENGTH_TITLE_CARD_CREATE,
 } from '../../constants/card-create.constant';
-import { CardsStateService } from '../../services/cards-state.service';
-import { correctDateValidator } from '../../validators/correct-date.validator';
+import { CustomCard } from '../../models/custom-card.model';
+import * as CustomCardAction from '../../../store/actions/custom-cards.action';
 
 @Component({
   selector: 'app-card-create',
@@ -15,9 +16,18 @@ import { correctDateValidator } from '../../validators/correct-date.validator';
   styleUrls: ['./card-create.component.scss'],
 })
 export class CardCreateComponent implements OnInit {
-  constructor(private cardsStateService: CardsStateService) {}
+  constructor(private store: Store) {}
 
   public formCard!: FormGroup;
+
+  private newCustomCard: CustomCard = {
+    title: '',
+    description: '',
+    linkImage: '',
+    linkVideo: '',
+    creationDate: '',
+    id: 0,
+  };
 
   protected message = CARD_CREATE_VALIDATION_TEXT;
 
@@ -33,15 +43,24 @@ export class CardCreateComponent implements OnInit {
       description: new FormControl('', [Validators.maxLength(MAX_LENGTH_DESCRIPTION_CARD_CREATE)]),
       linkImage: new FormControl('', [Validators.required, Validators.pattern(urlRegex)]),
       linkVideo: new FormControl('', [Validators.required, Validators.pattern(urlRegex)]),
-      dateCreation: new FormControl('', [Validators.required, correctDateValidator]),
     });
   }
 
   onSubmit() {
     if (this.formCard.valid) {
-      // check submitting Form
-      // eslint-disable-next-line no-console
-      console.log(this.formCard.value);
+      const newCard: CustomCard = {
+        title: this.formCard.value.title,
+        description: this.formCard.value.description,
+        linkImage: this.formCard.value.linkImage,
+        linkVideo: this.formCard.value.linkVideo,
+        creationDate: '',
+        id: 0,
+      };
+      newCard.creationDate = new Date().toString();
+      newCard.id = new Date(this.newCustomCard.creationDate).getTime();
+
+      this.store.dispatch(CustomCardAction.addCustomCards({ newCard }));
+
       this.formCard.reset();
     }
   }

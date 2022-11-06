@@ -1,24 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { SendSettingsSort } from 'src/app/app.component';
+import { selectCustomCards } from 'src/app/store/selectors/custom-cards.selector';
+import { selectAllYoutubeCards } from 'src/app/store/selectors/youtube-cards.selector';
 import { Card } from 'src/app/youtube/models/card.model';
-import { CardsStateService } from 'src/app/youtube/services/cards-state.service';
+import { CustomCard } from 'src/app/youtube/models/custom-card.model';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss'],
 })
-export class CardsComponent implements OnInit {
+export class CardsComponent {
   @Input() valueSort!: SendSettingsSort;
 
   @Input() valueFilter = '';
 
-  constructor(private cardsState: CardsStateService) {}
+  protected cards: Card[] = [];
 
-  cards: Card[] = [];
+  protected customCards: Observable<CustomCard[]>;
 
-  ngOnInit(): void {
-    this.cardsState.getCards().subscribe((items) => {
+  constructor(private store: Store) {
+    this.customCards = this.store.select(selectCustomCards);
+    this.store.select(selectAllYoutubeCards).subscribe((items) => {
       this.cards = items.slice();
     });
   }

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/core/services/header.service';
 import { SETTINGS_SORT } from '../../constants/settings.constat';
 import { SettingsSortDirection, SettingsSortType } from '../../models/settings.model';
-import { CardsStateService } from '../../services/cards-state.service';
+import { SettingsService } from '../../services/settings.service';
 
 export interface SortingSettings {
   sortType: SettingsSortType;
@@ -14,13 +14,19 @@ export interface SortingSettings {
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
-export class MainPageComponent implements OnInit {
-  constructor(private headerService: HeaderService, protected cardsState: CardsStateService) {}
+export class MainPageComponent implements OnInit, OnDestroy {
+  constructor(private headerService: HeaderService, private settingsService: SettingsService) {}
 
   ngOnInit(): void {
+    this.settingsService.isMainPage$.next(true);
+
     this.headerService.displaySettings.subscribe((state) => {
       this.visibleSettings = state;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.settingsService.isMainPage$.next(false);
   }
 
   visibleSettings = this.headerService.stateSettings;
